@@ -2,13 +2,13 @@ import React from "react";
 import "./Home.css";
 import { images } from "../../constants";
 import Carousel from "react-bootstrap/Carousel";
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Footer from '../Footer/Footer'
-import Image from 'react-bootstrap/Image'
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+// import Card from 'react-bootstrap/Card';
+import Footer from "../Footer/Footer";
+// import Image from 'react-bootstrap/Image'
 export default function Home() {
   return (
     <main>
@@ -58,15 +58,17 @@ export default function Home() {
               alt="Third slide"
             />
 
-
             <Carousel.Caption className="poisonivy">
               <div className="poisonivy-text">
                 <h1>Join our newsletter!</h1>
-                <p>
-                  Stay up to date with all of our releases.
-                </p>
+                <p>Stay up to date with all of our releases.</p>
               </div>
-              <Button className="poisonivybutton" variant="dark" size="md" active>
+              <Button
+                className="poisonivybutton"
+                variant="dark"
+                size="md"
+                active
+              >
                 LEARN MORE
               </Button>
             </Carousel.Caption>
@@ -90,8 +92,13 @@ export default function Home() {
             </Col>
             <Col xs={6}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </Col>
           </Row>
@@ -100,8 +107,13 @@ export default function Home() {
           <Row className="content-two-row">
             <Col xs={6}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </Col>
             <Col xs={6}>
@@ -114,7 +126,7 @@ export default function Home() {
           </Row>
         </Container>
         <Container className="new-comics">
-        <h1 className="new-releases">NEW RELEASES</h1>
+          <h1 className="new-releases">NEW RELEASES</h1>
           <Row className="new-comics-row">
             <Col>
               <img
@@ -125,37 +137,37 @@ export default function Home() {
               <p>AVENGERS: Earths Mightiest Heroes</p>
             </Col>
             <Col>
-            <img
-              className="d-block w-100"
-              src={images.darkknight}
-              alt="photograph"
-            />
-            <p>BATMAN: One Dark Knight</p>
-          </Col>
-          <Col>
-            <img
-              className="d-block w-100"
-              src={images.spiderman}
-              alt="photograph"
-            />
-            <p>SPIDERMAN: The Sinister Seven</p>
-          </Col>
-          <Col>
-            <img
-              className="d-block w-100"
-              src={images.blackpanther}
-              alt="photograph"
-            />
-            <p>BLACK PANTHER: Ridley Cabal</p>
-          </Col>
-          <Col>
-            <img
-              className="d-block w-100"
-              src={images.superman}
-              alt="photograph"
-            />
-            <p>SUPERMAN: Space Age</p>
-          </Col>
+              <img
+                className="d-block w-100"
+                src={images.darkknight}
+                alt="photograph"
+              />
+              <p>BATMAN: One Dark Knight</p>
+            </Col>
+            <Col>
+              <img
+                className="d-block w-100"
+                src={images.spiderman}
+                alt="photograph"
+              />
+              <p>SPIDERMAN: The Sinister Seven</p>
+            </Col>
+            <Col>
+              <img
+                className="d-block w-100"
+                src={images.blackpanther}
+                alt="photograph"
+              />
+              <p>BLACK PANTHER: Ridley Cabal</p>
+            </Col>
+            <Col>
+              <img
+                className="d-block w-100"
+                src={images.superman}
+                alt="photograph"
+              />
+              <p>SUPERMAN: Space Age</p>
+            </Col>
           </Row>
         </Container>
       </div>

@@ -31,8 +31,8 @@ export const Navbar = () => {
                   color: "#EFFFFD",
                   padding: "15px",
                   justifyContent: "center",
-                  fontSize: "22px",
-                  fontWeight: "bold",
+                  fontSize: "20px",
+                  fontWeight: "semi-bold",
                 }}
               >
                 Home
@@ -45,8 +45,8 @@ export const Navbar = () => {
                   color: "#EFFFFD",
                   padding: "15px",
                   justifyContent: "center",
-                  fontSize: "22px",
-                  fontWeight: "bold",
+                  fontSize: "20px",
+                  fontWeight: "semi-bold",
                 }}
               >
                 Products
@@ -59,8 +59,8 @@ export const Navbar = () => {
                   color: "#EFFFFD",
                   padding: "15px",
                   justifyContent: "center",
-                  fontSize: "22px",
-                  fontWeight: "bold",
+                  fontSize: "20px",
+                  fontWeight: "semi-bold",
                 }}
               >
                 Events
@@ -73,49 +73,41 @@ export const Navbar = () => {
                   color: "#EFFFFD",
                   padding: "15px",
                   justifyContent: "center",
-                  fontSize: "22px",
-                  fontWeight: "bold",
+                  fontSize: "20px",
+                  fontWeight: "semi-bold",
                 }}
               >
                 Profile
               </Link>
             </NavItem>
-            <NavItem _hover={{ borderBottomWidth: "2px" }}>
-              <Link
-                to="/subscribe"
-                style={{
-                  color: "#EFFFFD",
-                  padding: "15px",
-                  justifyContent: "center",
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                }}
-              >
-                Subscription
-              </Link>
-            </NavItem>
             <NavItem>
-              <Button
-                as="a"
-                href="/login"
-                variant="ghost"
-                size="md"
-                color="#EFFFFD"
-                fontSize="22px"
-              >
-                Log in
+              <Button bgColor={"#152D35"}>
+                <Link
+                  to="/login"
+                  style={{
+                    color: "#EFFFFD",
+                    justifyContent: "center",
+                    fontSize: "20px",
+                    fontWeight: "semi-bold",
+                  }}
+                >
+                  Log In
+                </Link>
               </Button>
             </NavItem>
             <NavItem>
-              <Button
-                as="a"
-                href="/register"
-                colorScheme="blue"
-                size="md"
-                color="#EFFFFD"
-                fontSize="22px"
-              >
-                Sign up
+              <Button bgColor={"#152D35"}>
+                <Link
+                  to="/register"
+                  style={{
+                    color: "#EFFFFD",
+                    justifyContent: "center",
+                    fontSize: "20px",
+                    fontWeight: "semi-bold",
+                  }}
+                >
+                  Sign Up
+                </Link>
               </Button>
             </NavItem>
             <NavItem _hover={{ borderBottomWidth: "2px" }} id="cart">
@@ -125,9 +117,8 @@ export const Navbar = () => {
                 style={{
                   color: "#EFFFFD",
                   padding: "15px",
-
-                  fontSize: "22px",
-                  fontWeight: "bold",
+                  fontSize: "20px",
+                  fontWeight: "semi-bold",
                 }}
               >
                 Cart

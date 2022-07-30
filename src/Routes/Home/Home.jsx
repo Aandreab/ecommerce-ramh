@@ -30,7 +30,7 @@ export default function Home() {
               alt="First slide"
             />
             <Carousel.Caption className="weekly">
-              <Button onClick={handleNewsletter} className="weeklybutton" variant="light" size="md" active>
+              <Button onClick={handleSubmit} className="weeklybutton" variant="light" size="md" active>
                 SHOP NOW
               </Button>
             </Carousel.Caption>

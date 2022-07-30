@@ -33,6 +33,10 @@ export default function Register({ setToken }) {
     setPassword("");
     navigate("/Home");
   };
+  const handleLogin = async (e) =>{
+    e.preventDefault();
+    navigate("/Login")
+  }
 
   return (
     <Box h={"100vh"} bg={"white"}>
@@ -95,12 +99,10 @@ export default function Register({ setToken }) {
               <Button type="submit" variant="solid" size="lg" bg={"white"}>
                 Sign up
               </Button>
-              <Button
+              <Button onClick={handleLogin}
                 variant="secondary"
-                //leftIcon={<GoogleIcon boxSize="5" />}
                 iconSpacing="3"
-              >
-                Sign up with Google
+              > Don't have an account?<p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>

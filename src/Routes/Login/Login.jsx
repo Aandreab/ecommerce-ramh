@@ -33,7 +33,10 @@ export default function Login({ setToken }) {
     setPassword("");
     navigate("/Home");
   };
-
+  const handleRegister = async (e) =>{
+    e.preventDefault();
+    navigate("/Register")
+  }
   return (
     <Box h={"100vh"} bg={"white"}>
       <Container
@@ -95,12 +98,10 @@ export default function Login({ setToken }) {
               <Button type="submit" variant="solid" size="lg" bg={"white"}>
                 Sign in
               </Button>
-              <Button
+              <Button onClick={handleRegister}
                 variant="secondary"
-                //leftIcon={<GoogleIcon boxSize="5" />}
                 iconSpacing="3"
-              >
-                Sign in with Google
+              > Already have an account?<p className="login-from-reg-link">Login</p>
               </Button>
             </Stack>
           </Stack>

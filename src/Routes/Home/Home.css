@@ -1,56 +1,67 @@
 @import url(https://fonts.googleapis.com/css?family=Sigmar+One);
 
+
+
 .home-container{
     min-height: 100vh;
     background: white;
     position: relative;
-    z-index: 1;
-    
+    z-index: 1; 
 }
-.poisonivy {
+.banner{
+    background-color: #256276;
+    padding: 30px;
+    margin-top: 30px;
+    width: 100%;
+}
+.weekly {
     left: 0;
-    top: 50%;
+    top: 55%;
     right: 0;
     margin: auto;
+    margin-left: 75px;
     padding: 10px;
     position: absolute;
-    text-align: right;
+    text-align: left;
     padding: 10px 85px;
 }
 
-.poisonivy-text{
-    color: black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 .subscription-bar-row{
     margin-top: 60px;
     padding-top: 40px;
     background-color: #256276;
 }
+
 .subscription-bar{
     margin: 0;
     padding: 0;
 
 }
 
-.content-one{
+.newsletter-row{
     padding-top: 60px;
-}
-.content-one-row{
     display: flex;
     align-items: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.content-two{
-    padding-top: 60px; 
-}
-.content-two-row{
+.newsletter-row-one{
+    padding-top: 30px;
     display: flex;
     align-items: center;
+}
+.newsletter-header{
+    padding-top: 30px;
+    font-size: 30px;
+    color: #256276;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 
-.new-comics{
+.home-news-heading{
+    padding: 10px;
+}
+
+.new-releases{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,10 +70,23 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.new-releases{
+
+.new-releases-header{
     font-size: 30px;
     color: #256276;
     padding-bottom: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
+}
+.spawn{
+    box-shadow: 0 0 8px 8px white inset;
+    background-color: #152D35;
+}
+.robert{
+    box-shadow: 0 0 8px 8px white inset;
+    background-color: #152D35;
+}
+.comicon{
+    box-shadow: 0 0 8px 8px white inset;
+    background-color: #152D35;
 }

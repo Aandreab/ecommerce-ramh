@@ -1,0 +1,41 @@
+.navbar-two {
+  display: flex;
+  padding: 20px 0 25px 0;
+  background: #F8F8F8;
+  font-size: 18px;
+}
+  .navbar-container {
+    align-items: center;
+    margin: auto;
+    width: 80%;
+  }
+
+  .navbar-left {
+    float: left;
+  }
+
+  .left-nav-links{
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+    
+  .left-nav-links:hover {
+    color: black;
+  }
+  .navbar-right {
+    display: flex;
+    float: right;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .nav-icons{
+    margin-right: 17px;
+    color: #777777;
+  }
+
+  .nav-icons:hover {
+    color: black;
+  }

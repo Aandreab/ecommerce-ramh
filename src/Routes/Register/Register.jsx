@@ -102,7 +102,7 @@ export default function Register({ setToken }) {
               <Button onClick={handleLogin}
                 variant="secondary"
                 iconSpacing="3"
-              > Already have an account?<p className="login-from-reg-link">Login</p>
+              > Don't have an account?<p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>

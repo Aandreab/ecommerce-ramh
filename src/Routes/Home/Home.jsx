@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Footer from '../Footer/Footer';
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 export default function Home() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -113,52 +113,78 @@ export default function Home() {
 
 
 
-
-
-
-
         <Container className="new-releases">
           <h1 className="new-releases-header">NEW RELEASES</h1>
           <Row className="new-releases-row">
             <Col>
-              <img
-                className="d-block w-100"
-                src={images.avengers}
-                alt="photograph"
-              />
-              <p>AVENGERS: Earths Mightiest Heroes</p>
+              <motion.div
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, type: "tween" }}
+              >
+                <img
+                  className="new-release-indv"
+                  src={images.avengers}
+                  alt="photograph"
+                />
+                <p>AVENGERS: Earths Mightiest Heroes</p>
+              </motion.div>
+            </Col>
+            <Col >
+              <motion.div
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, type: "tween" }}
+              >
+                <img
+                  className="new-release-indv"
+                  src={images.darkknight}
+                  alt="photograph"
+                />
+                <p>BATMAN: One Dark Knight</p>
+              </motion.div>
             </Col>
             <Col>
-              <img
-                className="d-block w-100"
-                src={images.darkknight}
-                alt="photograph"
-              />
-              <p>BATMAN: One Dark Knight</p>
+              <motion.div
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, type: "tween" }}
+              >
+                <img
+                  className="new-release-indv"
+                  src={images.spiderman}
+                  alt="photograph"
+                />
+                <p>SPIDERMAN: The Sinister Seven</p>
+              </motion.div>
             </Col>
             <Col>
-              <img
-                className="d-block w-100"
-                src={images.spiderman}
-                alt="photograph"
-              />
-              <p>SPIDERMAN: The Sinister Seven</p>
+              <motion.div
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, type: "tween" }}
+              >
+                <img
+                  className="new-release-indv"
+                  src={images.blackpanther}
+                  alt="photograph"
+                />
+                <p>BLACK PANTHER: Ridley Cabal</p>
+              </motion.div>
             </Col>
             <Col>
-              <img
-                className="d-block w-100"
-                src={images.blackpanther}
-                alt="photograph"
-              />
-              <p>BLACK PANTHER: Ridley Cabal</p>
-            </Col>
-            <Col>
-              <img
-                className="d-block w-100"
-                src={images.superman}
-                alt="photograph"
-              />
-              <p>SUPERMAN: Space Age</p>
+              <motion.div
+                whileInView={{ opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, type: "tween" }}
+              >
+                <img
+                  className="new-release-indv"
+                  src={images.superman}
+                  alt="photograph"
+                />
+                <p>SUPERMAN: Space Age</p>
+              </motion.div>
             </Col>
           </Row>
         </Container>

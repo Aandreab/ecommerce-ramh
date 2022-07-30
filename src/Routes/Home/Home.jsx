@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     navigate("/Products")
   }
@@ -55,7 +55,7 @@ export default function Home() {
         </Container> */}
         <Container className="shop-character-container">
           <Row className="shop-character-row">
-            <Col className="shop-character-row">
+            <Col className="shop-character-col">
             </Col>
           </Row>
         </Container>

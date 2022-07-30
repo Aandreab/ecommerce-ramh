@@ -1,9 +1,7 @@
 import React from 'react';
 import './Footer.css'
 
-
 export default function Footer() {
-
   return (
     <footer className='footer'>
       <svg width="150" height="150" viewBox="0 0 24 24">

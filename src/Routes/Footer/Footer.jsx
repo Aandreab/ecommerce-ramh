@@ -1,14 +1,55 @@
 import React from 'react';
 import './Footer.css'
-
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { BsFillCursorFill } from 'react-icons/bs';
+import { AiFillTwitterCircle } from 'react-icons/ai';
+import { AiFillFacebook } from 'react-icons/ai';
+import { AiFillInstagram } from 'react-icons/ai';
+import { AiFillLinkedin } from 'react-icons/ai';
 export default function Footer() {
-
   return (
     <footer className='footer'>
-      <svg width="150" height="150" viewBox="0 0 24 24">
-        <path fill="white" d="M12,8L10.67,8.09C9.81,7.07 7.4,4.5 5,4.5C5,4.5 3.03,7.46 4.96,11.41C4.41,12.24 4.07,12.67 4,13.66L2.07,13.95L2.28,14.93L4.04,14.67L4.18,15.38L2.61,16.32L3.08,17.21L4.53,16.32C5.68,18.76 8.59,20 12,20C15.41,20 18.32,18.76 19.47,16.32L20.92,17.21L21.39,16.32L19.82,15.38L19.96,14.67L21.72,14.93L21.93,13.95L20,13.66C19.93,12.67 19.59,12.24 19.04,11.41C20.97,7.46 19,4.5 19,4.5C16.6,4.5 14.19,7.07 13.33,8.09L12,8M9,11A1,1 0 0,1 10,12A1,1 0 0,1 9,13A1,1 0 0,1 8,12A1,1 0 0,1 9,11M15,11A1,1 0 0,1 16,12A1,1 0 0,1 15,13A1,1 0 0,1 14,12A1,1 0 0,1 15,11M11,14H13L12.3,15.39C12.5,16.03 13.06,16.5 13.75,16.5A1.5,1.5 0 0,0 15.25,15H15.75A2,2 0 0,1 13.75,17C13,17 12.35,16.59 12,16V16H12C11.65,16.59 11,17 10.25,17A2,2 0 0,1 8.25,15H8.75A1.5,1.5 0 0,0 10.25,16.5C10.94,16.5 11.5,16.03 11.7,15.39L11,14Z" /> </svg>
-        <p className='temp-footer'>FOOTER COMING SOON!</p>
+      <Container className="footer-container">
+        <Row className="footer-row">
+          <Col className="footer-col">
+          <div className='footer-company-header'>KAMIKAZE COMICS</div>
+          <div className='footer-company-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehender</div>
+          </Col>
+
+          <Col className="footer-col">
+          <div className='quicklinks-header'>QUICK LINKS</div>
+          <div className='footer-links'>Comics</div>
+          <div className='footer-links'>Newsletter</div>
+          <div className='footer-links'> About Us </div>
+          <div className='footer-links'>Privacy Policy</div>
+          </Col>
+
+          <Col className="footer-col">
+            <h1 className='footer-sign-up-header'> SIGN UP FOR OUR NEWSLETTER</h1>
+            <InputGroup className="mb-3">
+              <Form.Control placeholder="Email" />
+              <Button variant="outline-secondary" id="button-addon2">
+                <BsFillCursorFill className='curser' />
+              </Button>
+            </InputGroup>
+            <div className='socials-container'>
+              <a href="https://www.facebook.com/"><AiFillFacebook className='social-icons' size={30}/></a>
+              <a href="https://www.instagram.com/"><AiFillInstagram className='social-icons' size={30}/></a>
+              <a href="https://twitter.com/"><AiFillTwitterCircle className='social-icons' size={30}/></a>
+              <a href="https://www.linkedin.com/"><AiFillLinkedin className='social-icons' size={30}/></a>
+            </div>
+          </Col>
+
+        </Row>
+        <Row>
+          <p className="copyright">Kamikaze Comics Copyright © 2022</p>
+        </Row>
+      </Container>
     </footer>
   );
 }

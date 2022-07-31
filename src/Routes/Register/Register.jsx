@@ -25,13 +25,26 @@ export default function Register({ setToken }) {
   console.log(username);
   console.log(password);
 
-  const handleSubmit = async (e) => {
-    e.ppreventDefault();
-    const registerInfo = await registerUser(username, password);
-    setToken(registerInfo);
-    setUsername("");
-    setPassword("");
-    navigate("/Home");
+  const onRegister = async (e) => {
+    e.preventDefault();
+    const result = await registerUser(username, password);
+    window.localStorage.setItem("token", result.token);
+    window.localStorage.setItem("username", username);
+    const myToken = result.token;
+    setToken(myToken);
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const registerInfo = await registerUser(username, password);
+  //   setToken(registerInfo);
+  //   setUsername("");
+  //   setPassword("");
+  //   navigate("/Home");
+  // };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    navigate("/Login");
   };
 
   return (
@@ -74,7 +87,7 @@ export default function Register({ setToken }) {
                   placeholder="Create Username"
                   type="username"
                   value={username}
-                  onChange={(event) => setUsername(event.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </FormControl>
               <FormControl>
@@ -84,23 +97,27 @@ export default function Register({ setToken }) {
                   placeholder="********"
                   type="password"
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
             </HStack>
-            <Stack spacing="4" onSubmit={handleSubmit}>
-              <Button type="submit" variant="solid" size="lg" bg={"white"}>
+            <Stack spacing="4">
+              <Button
+                type="submit"
+                variant="solid"
+                size="lg"
+                bg={"white"}
+                onClick={(e) => onRegister(e, setToken, username, password)}
+              >
                 Sign up
               </Button>
-              <Button
-                variant="secondary"
-                //leftIcon={<GoogleIcon boxSize="5" />}
-                iconSpacing="3"
-              >
-                Sign up with Google
+              <Button onClick={handleLogin} variant="secondary" iconSpacing="3">
+                {" "}
+                Don't have an account?
+                <p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>

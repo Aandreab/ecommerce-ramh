@@ -26,7 +26,7 @@ export default function Register({ setToken }) {
   console.log(password);
 
   const handleSubmit = async (e) => {
-    e.ppreventDefault();
+    e.preventDefault();
     const registerInfo = await registerUser(username, password);
     setToken(registerInfo);
     setUsername("");
@@ -95,8 +95,8 @@ export default function Register({ setToken }) {
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
             </HStack>
-            <Stack spacing="4" onSubmit={handleSubmit}>
-              <Button type="submit" variant="solid" size="lg" bg={"white"}>
+            <Stack spacing="4">
+              <Button type="submit" variant="solid" size="lg" bg={"white"} onSubmit={handleSubmit()}>
                 Sign up
               </Button>
               <Button onClick={handleLogin}

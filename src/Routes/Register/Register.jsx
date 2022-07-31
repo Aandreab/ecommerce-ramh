@@ -22,8 +22,6 @@ export default function Register({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  console.log(username);
-  console.log(password);
 
   const onRegister = async (e) => {
     e.preventDefault();

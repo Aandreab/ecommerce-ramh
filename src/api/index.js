@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://localhost:3001/api';
+export const BASE_URL = 'http://localhost:3001/api';
 
 
 export const registerUser = async (username, password) => {
@@ -13,8 +13,11 @@ export const registerUser = async (username, password) => {
         password,
       }),
     });
-    const data = await response.json();
-    return data;
+    const {
+      data: { token },
+    } = await response.json();
+    console.log(token)
+    return token;
   } catch (error) {
     console.error("error", error);
   }

@@ -54,11 +54,6 @@ export default function Navbar2() {
             </Link>
           </div>
         </div>
-<<<<<<< HEAD
-    );
-}
-
-=======
       </nav>
       <Routes>
         <Route path="*" element={<Home />} />
@@ -73,4 +68,3 @@ export default function Navbar2() {
     </div>
   );
 }
->>>>>>> a5a3f7aa9082db7af0275e52efc7e1ad290e6d3b

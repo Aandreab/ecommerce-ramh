@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 export const BASE_URL = 'https://localhost:3001/api';
 
-=======
-export const BASE_URL = "https://tranquil-plains-39024.herokuapp.com/api";
->>>>>>> a5a3f7aa9082db7af0275e52efc7e1ad290e6d3b
 
 export const registerUser = async (username, password) => {
   try {

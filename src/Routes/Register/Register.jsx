@@ -25,17 +25,13 @@ export default function Register({ setToken }) {
   console.log(username);
   console.log(password);
 
-<<<<<<< HEAD
-  const handleSubmit = async (e) => {
-=======
   const onRegister = async (e) => {
->>>>>>> a5a3f7aa9082db7af0275e52efc7e1ad290e6d3b
     e.preventDefault();
     const registerInfo = await registerUser(username, password);
     setToken(registerInfo)
     setUsername("");
     setPassword("");
-    navigate("/Home");
+    // navigate("/Home");
   };
 
   // const handleSubmit = async (e) => {
@@ -109,9 +105,6 @@ export default function Register({ setToken }) {
               <Checkbox defaultChecked>Remember me</Checkbox>
             </HStack>
             <Stack spacing="4">
-<<<<<<< HEAD
-              <Button type="submit" variant="solid" size="lg" bg={"white"} onSubmit={handleSubmit()}>
-=======
               <Button
                 type="submit"
                 variant="solid"
@@ -119,7 +112,6 @@ export default function Register({ setToken }) {
                 bg={"white"}
                 onClick={(e) => onRegister(e, setToken, username, password)}
               >
->>>>>>> a5a3f7aa9082db7af0275e52efc7e1ad290e6d3b
                 Sign up
               </Button>
               <Button onClick={handleLogin} variant="secondary" iconSpacing="3">

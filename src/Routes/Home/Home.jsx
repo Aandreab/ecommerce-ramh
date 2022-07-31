@@ -206,9 +206,5 @@ export default function Home() {
       </div>
       <Footer />
     </main>
-<<<<<<< HEAD
-  )
-=======
   );
->>>>>>> a5a3f7aa9082db7af0275e52efc7e1ad290e6d3b
 }

@@ -4,9 +4,8 @@ export const registerUser = async (username, password) => {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
-      mode: "no-cors",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username,

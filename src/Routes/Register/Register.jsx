@@ -27,11 +27,11 @@ export default function Register({ setToken }) {
 
   const onRegister = async (e) => {
     e.preventDefault();
-    const result = await registerUser(username, password);
-    window.localStorage.setItem("token", result.token);
-    window.localStorage.setItem("username", username);
-    const myToken = result.token;
-    setToken(myToken);
+    const registerInfo = await registerUser(username, password);
+    setToken(registerInfo)
+    setUsername("");
+    setPassword("");
+    navigate("/Home");
   };
 
   // const handleSubmit = async (e) => {

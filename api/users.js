@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
-
+const apiRouter = express.Router();
+const { verifyToken } = require('./middleWare.js');
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
 
@@ -10,6 +10,7 @@ const {
   getUserById,
   getUser,
 } = require("../db/users");
+
 const {
   UserTakenError,
   PasswordTooShortError,
@@ -17,7 +18,7 @@ const {
 } = require("../errors");
 
 // POST /api/users/login
-router.post("/login", async (req, res, next) => {
+apiRouter.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     const user = await getUser({ username, password });
@@ -43,16 +44,16 @@ router.post("/login", async (req, res, next) => {
 });
 
 // POST /api/users/register
-router.post("/register", async (req, res, next) => {
+apiRouter.post('/register', async (req, res, next) => {
   const { username, password } = req.body;
   try {
     const existingUser = await getUserByUsername(username);
-    if (existingUser.length) {
+    if (existingUser) {
       next({
         name: "That username is taken",
         message: UserTakenError(username),
       });
-    } else if (password.length < 8) {
+    } else if (password < 8) {
       next({
         message: PasswordTooShortError(),
         name: "Password needs to be 8 or more characters!",
@@ -78,7 +79,7 @@ router.post("/register", async (req, res, next) => {
 });
 
 // GET /api/users/me
-router.get("/me", async (req, res, next) => {
+apiRouter.get("/me", async (req, res, next) => {
   if (!req.user) {
     res.status(401);
     next({
@@ -92,4 +93,25 @@ router.get("/me", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+// ADMIN only
+apiRouter.get("/users", verifyToken, async (req, res, next) => {
+  try {
+    jwt.verify(req.token, "secretkey", async (err, authData) => {
+      if (err) {
+        res.send({ error: err, status: 403 });
+      } else if (authData.user.role === "admin") {
+        const allUsers = await getUser();
+
+        res.send({
+          allUsers,
+        });
+      } else {
+        res.send({ message: "User does not have admin privileges!" });
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = apiRouter;

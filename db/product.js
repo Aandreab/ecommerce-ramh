@@ -29,31 +29,32 @@ async function getProductById(id) {
     }
 }
 
-async function getProductByName(title) {
+async function getProductByName(name) {
     try {
         const {
             rows: [product],
         } = await client.query(
             `
         SELECT * FROM products
-        WHERE title = $1;
-        `, [title]);
+        WHERE name = $1;
+        `, [name]);
         return product;
     } catch (error) {
-        console.error("Error: Problem getting product title...", error);
+        console.error("Error: Problem getting product name...", error);
     }
 }
 
+// Cut out of createProduct "photoUrl", authorId, distId,
 async function createProduct({
     name,
     description,
-    photoUrl,
-    authorId,
-    distId,
+    // photoUrl,
+    // authorId,
+    // distId,
     department,
     price,
     inStock,
-    quantity,
+    // quantity,
     count,
 }) {
     try {
@@ -61,11 +62,11 @@ async function createProduct({
             rows: [product],
         } = await client.query(
             `
-        INSERT INTO products(name, description, "photoUrl", authorId, distId, quantity, price, department, "inStock",  count)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        INSERT INTO products(name, description, price, department, "inStock",  count)
+        VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING *;
       `,
-            [name, description, photoUrl, authorId, distId, quantity, price, department, inStock, count]
+            [name, description, price, department, inStock, count]
         );
 
         return product;

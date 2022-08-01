@@ -4,6 +4,7 @@ const {
   createUser,
   createDistributor,
   createAuthors,
+  createProduct
 } = require('./')
 
 async function dropTables() {
@@ -55,15 +56,12 @@ async function dropTables() {
         );
         CREATE TABLE products (
           id SERIAL PRIMARY KEY,
-          title VARCHAR(255) UNIQUE NOT NULL,
+          name VARCHAR(255) UNIQUE NOT NULL,
           description TEXT NOT NULL,
-          "photoUrl" TEXT NOT NULL,
           price DECIMAL NOT NULL,
           department TEXT NOT NULL,
           "inStock" BOOLEAN,
-          count INTEGER NOT NULL,
-          "authorId" INTEGER REFERENCES authors(id),
-          "distId" INTEGER REFERENCES distributors(id)
+          count INTEGER NOT NULL
         );
         CREATE TABLE cart (
           id SERIAL PRIMARY KEY,
@@ -163,6 +161,54 @@ async function createInitialAuthors() {
   }
 }
 
+async function createInitialProducts() {
+  try {
+    console.log("Starting to create products...")
+
+    const productsToCreate =[
+      {
+        name: "Comicbook 1",
+        description: "Hey this is a comicbook!",
+        price: 1.00,
+        department: "Marvel/DC",
+        inStock: true,
+        count: 1,
+      },
+      {
+        name: "Comicbook 2",
+        description: "Hey this is a comicbook!",
+        price: 1.00,
+        department: "Marvel/DC",
+        inStock: true,
+        count: 4,
+      },
+      {
+        name: "Comicbook 3",
+        description: "Hey this is a comicbook!",
+        price: 1.00,
+        department: "Marvel/DC",
+        inStock: true,
+        count: 7,
+      },
+      {
+        name: "Comicbook 4",
+        description: "Hey this is a comicbook!",
+        price: 1.00,
+        department: "Marvel/DC",
+        inStock: true,
+        count: 5,
+      }
+    ]
+    const products = await Promise.all(productsToCreate.map(createProduct))
+
+    console.log("products created:")
+    console.log(products)
+  } catch (error) {
+    console.error("Error creating products!")
+    throw error
+  }
+}
+
 async function rebuildDB() {
     try {
         await dropTables()
@@ -170,6 +216,7 @@ async function rebuildDB() {
         await createInitialUsers()
         await createInitialDistributor()
         await createInitialAuthors()
+        await createInitialProducts()
     } catch (error) {
         console.log("Error during rebuildDB")
         throw error

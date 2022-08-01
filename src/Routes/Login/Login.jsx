@@ -32,8 +32,6 @@ export default function Login({ setToken }) {
   const [loginMessage, setLoginMessage] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  console.log(username);
-  console.log(password);
 
   // const handleSubmit = async (e) => {
   //   e.ppreventDefault();
@@ -51,11 +49,10 @@ export default function Login({ setToken }) {
       onOpen();
     }
     setToken(loginInfo)
-    setUsername("");
-    setPassword("");
     window.localStorage.setItem("token", loginInfo.token);
     window.localStorage.setItem("username", username);
     setLoginMessage(loginInfo);
+    console.log(username, password); 
     onOpen();
     //navigate("/Home");
   };

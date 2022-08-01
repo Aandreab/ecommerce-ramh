@@ -16,20 +16,38 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useDisclosure,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalFooter,
+  ModalOverlay,
 } from "@chakra-ui/react";
 
 export default function Register({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [registerMessage, setRegisterMessage] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
   const onRegister = async (e) => {
     e.preventDefault();
     const registerInfo = await registerUser(username, password);
+    if (registerInfo.error) {
+      setRegisterMessage(registerInfo);
+      onOpen();
+    }
     setToken(registerInfo)
     setUsername("");
     setPassword("");
-    // navigate("/Home");
+    window.localStorage.setItem("token", registerInfo.token);
+    window.localStorage.setItem("username", username);
+    setRegisterMessage(registerInfo);
+    onOpen();
+    //navigate("/Home");
   };
 
   // const handleSubmit = async (e) => {
@@ -73,7 +91,7 @@ export default function Register({ setToken }) {
               >
                 Create an account
               </Heading>
-              <Text color="muted">Start making your dreams come true</Text>
+              <Text color="muted">Get your Comic(on)</Text>
             </Stack>
           </Stack>
           <Stack spacing="6">
@@ -114,14 +132,32 @@ export default function Register({ setToken }) {
               </Button>
               <Button onClick={handleLogin} variant="secondary" iconSpacing="3">
                 {" "}
-                Don't have an account?
-                <p className="login-from-reg-link">Sign Up</p>
+                Already have an account?
+                <p className="login-from-reg-link">Log In</p>
               </Button>
             </Stack>
           </Stack>
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay
+          bg="none"
+          backdropFilter="auto"
+          backdropInvert="80%"
+          backdropBlur="2px"
+        />
+        <ModalContent>
+          <ModalHeader textAlign={"center"}>{registerMessage.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody textAlign={"center"} fontWeight={400}>
+            <Text fontWeight={400}>{registerMessage.message}</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }

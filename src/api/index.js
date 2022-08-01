@@ -36,9 +36,7 @@ export const loginUser = async (username, password) => {
       }),
     });
 
-    const {
-      data: { token },
-    } = await response.json();
+    const token  = await response.json();
     //console.log(token)
     return token;
   } catch (err) {

@@ -14,7 +14,7 @@ const bcrypt = require("bcrypt"); //Extra credit attempt!
           INSERT INTO users(username, password)
           VALUES($1, $2)
           ON CONFLICT (username) DO NOTHING
-          RETURNING *;
+          RETURNING (username, password);
         `,
         [username, hashedPassword]
       );

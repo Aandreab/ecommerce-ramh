@@ -10,8 +10,8 @@ apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer ";
   const auth = req.header("Authorization");
 
-  // if no Authorization header, pass on by
-  if (!auth) {
+// if no Authorization header, pass on by
+if (!auth) {
     next();
     // if Authorization header exists, pull token from header
   } else if (auth.startsWith(prefix)) {
@@ -47,4 +47,32 @@ apiRouter.get("/health", async (req, res, next) => {
 const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
 
-module.exports = apiRouter;
+// function verifyToken(req, res, next) {
+//   //get Auth header
+//   const bearerHeader = req.headers["authorization"];
+//   // console.log("bearerheader", bearerHeader);
+
+//   if (typeof bearerHeader !== "undefined") {
+//     const bearer = bearerHeader.split(" ");
+//     //  console.log("bearer", bearer);
+
+//     const bearerToken = bearer[1];
+//     // console.log("bearertoken", bearerToken);
+
+//     req.token = bearerToken;
+//     next();
+
+//   } else {
+//     res.sendStatus(403);
+//   }
+// }
+
+apiRouter.get("/", (req, res) => {
+  res.send({
+    message: "API is under construction, please be patient!",
+  });
+});
+
+module.exports = {
+  apiRouter
+};

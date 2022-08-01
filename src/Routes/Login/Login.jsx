@@ -16,24 +16,50 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useDisclosure,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalFooter,
+  ModalOverlay,
 } from "@chakra-ui/react";
 
 export default function Login({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginMessage, setLoginMessage] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   console.log(username);
   console.log(password);
 
-  const handleSubmit = async (e) => {
-    e.ppreventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.ppreventDefault();
+  //   const loginInfo = await loginUser(username, password);
+  //   setToken(loginInfo);
+  //   setUsername("");
+  //   setPassword("");
+  //   navigate("/Home");
+  // };
+  const onLogin = async (e) => {
+    e.preventDefault();
     const loginInfo = await loginUser(username, password);
-    setToken(loginInfo);
+    if (loginInfo.error) {
+      setLoginMessage(loginInfo);
+      onOpen();
+    }
+    setToken(loginInfo)
     setUsername("");
     setPassword("");
-    navigate("/Home");
+    window.localStorage.setItem("token", loginInfo.token);
+    window.localStorage.setItem("username", username);
+    setLoginMessage(loginInfo);
+    onOpen();
+    //navigate("/Home");
   };
-  const handleRegister = async (e) =>{
+  const navToRegister = async (e) =>{
     e.preventDefault();
     navigate("/Register")
   }
@@ -65,7 +91,7 @@ export default function Login({ setToken }) {
               >
                 Login to your account
               </Heading>
-              <Text color="muted">Keep making your dreams come true</Text>
+              <Text color="muted">Keep making your Comic(on)</Text>
             </Stack>
           </Stack>
           <Stack spacing="6">
@@ -77,7 +103,7 @@ export default function Login({ setToken }) {
                   placeholder="Username"
                   type="username"
                   value={username}
-                  onChange={(event) => setUsername(event.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </FormControl>
               <FormControl>
@@ -87,27 +113,45 @@ export default function Login({ setToken }) {
                   placeholder="********"
                   type="password"
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormControl>
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
             </HStack>
-            <Stack spacing="4" onSubmit={handleSubmit}>
-              <Button type="submit" variant="solid" size="lg" bg={"white"}>
+            <Stack spacing="4">
+              <Button type="submit" variant="solid" size="lg" bg={"white"} onClick={(e) => onLogin(e, setToken, username, password)}>
                 Sign in
               </Button>
-              <Button onClick={handleRegister}
+              <Button onClick={navToRegister}
                 variant="secondary"
                 iconSpacing="3"
-              > Already have an account?<p className="login-from-reg-link">Login</p>
+              > Don't have an account?<p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay
+          bg="none"
+          backdropFilter="auto"
+          backdropInvert="80%"
+          backdropBlur="2px"
+        />
+        <ModalContent>
+          <ModalHeader textAlign={"center"}>{loginMessage.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody textAlign={"center"} fontWeight={400}>
+            <Text fontWeight={400}>{loginMessage.message}</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }

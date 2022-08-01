@@ -9,6 +9,6 @@ server.listen(PORT, () => {
   console.log(
     chalk.blueBright("Server Operational. Listening on PORT:"),
     chalk.yellow(PORT),
-    chalk.blueBright("Hey man, get your routine on!")
+    chalk.blueBright("Hey man, want to read a comicbook?")
   )
 })

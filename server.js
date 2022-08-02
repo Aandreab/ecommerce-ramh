@@ -1,4 +1,6 @@
-const http = require("http")
+const http = require("http");
+const client = require('./client');
+
 const chalk = require("chalk")
 const app = require("./app")
 
@@ -12,3 +14,5 @@ server.listen(PORT, () => {
     chalk.blueBright("Hey man, want to read a comicbook?")
   )
 })
+
+client.connect();

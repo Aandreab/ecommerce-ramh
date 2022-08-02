@@ -1,4 +1,4 @@
-const client = require("./client");
+const client = require("../client/client");
 const getCompletedCart = require('./cart.js');
 
 // reference routine_activities in fitness tracker

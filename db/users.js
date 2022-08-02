@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-const client = require("./client");
+const client = require("../client/client");
 const bcrypt = require("bcrypt"); //Extra credit attempt!
 
 // database functions

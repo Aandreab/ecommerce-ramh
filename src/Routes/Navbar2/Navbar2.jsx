@@ -53,7 +53,7 @@ export default function Navbar2() {
               <HiOutlineShoppingCart className="nav-icons" size={20} />
             </Link>
           </div>
-        </div>
+        </div> 
       </nav>
       <Routes>
         <Route path="*" element={<Home />} />
@@ -68,4 +68,3 @@ export default function Navbar2() {
     </div>
   );
 }
-

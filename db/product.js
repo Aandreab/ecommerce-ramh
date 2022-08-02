@@ -29,18 +29,18 @@ async function getProductById(id) {
     }
 }
 
-async function getProductByName(title) {
+async function getProductByName(name) {
     try {
         const {
             rows: [product],
         } = await client.query(
             `
         SELECT * FROM products
-        WHERE title = $1;
-        `, [title]);
+        WHERE name = $1;
+        `, [name]);
         return product;
     } catch (error) {
-        console.error("Error: Problem getting product title...", error);
+        console.error("Error: Problem getting product name...", error);
     }
 }
 

@@ -42,6 +42,7 @@ apiRouter.get("/products/:productId", async (req, res, next) => {
     }
 });
 
+// Create product
 apiRouter.post("/products", verifyToken, async (req, res, next) => {
     // required fields from table
     const { name, description, photoUrl, department, price, count, quantity } =

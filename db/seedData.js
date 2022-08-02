@@ -55,7 +55,7 @@ async function dropTables() {
         );
         CREATE TABLE products (
           id SERIAL PRIMARY KEY,
-          title VARCHAR(255) UNIQUE NOT NULL,
+          name VARCHAR(255) UNIQUE NOT NULL,
           description TEXT NOT NULL,
           "photoUrl" TEXT NOT NULL,
           price DECIMAL NOT NULL,

@@ -66,88 +66,86 @@ async function getAllProducts() {
     }
 }
 
-async function getProductByName(name) {
+const getProductByName = async (title) => {
     try {
-        const {
-            rows: [product],
-        } = await client.query(
-            `
+        const { rows } = await client.query(
+        `
         SELECT * FROM products
-        WHERE name = $1;
-        `, [name]);
-        return product;
-    } catch (error) {
-        console.error("Error: Problem getting product name...", error);
-    }
-}
-
-
-
-async function updateProduct({ id, description, authorId, distId }) {
-    const fields = { description, authorId, distId };
-
-    const setString = Object.keys(fields)
-        .map((key, index) => `"${key}"=$${index + 1}`)
-        .join(", ");
-
-    if (setString.length === 0) {
-        return;
-    }
-    try {
-        const {
-            rows: [product],
-        } = await client.query(
-            `
-            UPDATE products
-            SET ${setString}
-            WHERE id=${id}
-            RETURNING *;
-            `,
-            Object.values(fields)
+        WHERE title = $1;
+        `,
+        [title]
         );
-        return product;
+        return rows;
     } catch (error) {
-        console.error("Problem updating products!", error);
+    console.error("Error: Problem getting product title...", error);
     }
 }
 
-async function addCount(id) {
-    const product = await getProductById(id);
-  
-    try {
-      const { rows } = await client.query(
-        `
-      UPDATE products
-      SET count = $1
-      WHERE id = $2
-      RETURNING *
-      `,
-        [product.count + 1, id]
-      );
-      return rows;
-    } catch (error) {
-        console.error("Problem updating products!", error);
-    }
-  }
+// async function updateProduct({ id, description, authorId, distId }) {
+//     const fields = { description, authorId, distId };
 
-  async function subtractCount(id) {
-    const product = await getProductById(id);
+//     const setString = Object.keys(fields)
+//         .map((key, index) => `"${key}"=$${index + 1}`)
+//         .join(", ");
+
+//     if (setString.length === 0) {
+//         return;
+//     }
+//     try {
+//         const {
+//             rows: [product],
+//         } = await client.query(
+//             `
+//             UPDATE products
+//             SET ${setString}
+//             WHERE id=${id}
+//             RETURNING *;
+//             `,
+//             Object.values(fields)
+//         );
+//         return product;
+//     } catch (error) {
+//         console.error("Problem updating products!", error);
+//     }
+// }
+
+// async function addCount(id) {
+//     const product = await getProductById(id);
   
-    try {
-      const { rows } = await client.query(
-        `
-      UPDATE products
-      SET count = $1
-      WHERE id = $2
-      RETURNING *
-      `,
-        [product.count - 1, id]
-      );
-      return rows;
-    } catch (error) {
-        console.error("Problem updating products!", error);
-    }
-  }
+//     try {
+//       const { rows } = await client.query(
+//         `
+//       UPDATE products
+//       SET count = $1
+//       WHERE id = $2
+//       RETURNING *
+//       `,
+//         [product.count + 1, id]
+//       );
+//       return rows;
+//     } catch (error) {
+//         console.error("Problem updating products!", error);
+//     }
+//   }
+
+// async function subtractCount(id) {
+//     const product = await getProductById(id);
+
+//     try {
+//         const { rows } = await client.query(
+//         `
+//         UPDATE products
+//         SET count = $1
+//         WHERE id = $2
+//         RETURNING *
+//         `,
+//         [product.count - 1, id]
+//         );
+//         return rows;
+//     } catch (error) {
+//         console.error("Problem updating products!", error);
+//     }
+//     }
 
 const destroyProduct = async (id) => {
     await client.query(`
@@ -174,8 +172,8 @@ module.exports = {
     getAllProducts,
     getProductById,
     getProductByName,
-    updateProduct,
+    // updateProduct,
     destroyProduct,
-    addCount,
-    subtractCount
+    // addCount,
+    // subtractCount
 };

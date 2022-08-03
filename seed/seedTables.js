@@ -34,7 +34,7 @@ async function createTables() {
             title VARCHAR(255) NOT NULL,
             author VARCHAR(255) NOT NULL,
             publisher VARCHAR(255) NOT NULL,
-            "image" TEXT NOT NULL,
+            "imageLink" TEXT NOT NULL,
             genre VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
             rating NUMERIC,

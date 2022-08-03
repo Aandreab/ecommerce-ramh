@@ -44,7 +44,7 @@ export default function Navbar2() {
           </div>
           <div className="navbar-right">
             {/* {token ? <Link className='right-nav-links' to="/Profile"><CgProfile className='nav-icons' size={20} /></Link>: null} */}
-            <Link className="right-nav-links" to="/Profile">
+            <Link className="right-nav-links" to="/Register">
               <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
                 <CgProfile className="nav-icons" size={20} />
               </Button>

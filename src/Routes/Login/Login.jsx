@@ -41,6 +41,22 @@ export default function Login({ setToken }) {
   //   setPassword("");
   //   navigate("/Home");
   // };
+  // const onLogin = async (e) => {
+  //   e.preventDefault();
+  //   const loginInfo = await loginUser(username, password);
+  //   if (loginInfo.error) {
+  //     setLoginMessage(loginInfo);
+  //     onOpen();
+  //   }
+  //   setToken(loginInfo)
+  //   window.localStorage.setItem("token", loginInfo.token);
+  //   window.localStorage.setItem("username", username);
+  //   setLoginMessage(loginInfo);
+  //   console.log(username, password); 
+  //   onOpen();
+  //   //navigate("/Home");
+  // }; 
+
   const onLogin = async (e) => {
     e.preventDefault();
     const loginInfo = await loginUser(username, password);
@@ -48,13 +64,12 @@ export default function Login({ setToken }) {
       setLoginMessage(loginInfo);
       onOpen();
     }
-    setToken(loginInfo)
     window.localStorage.setItem("token", loginInfo.token);
     window.localStorage.setItem("username", username);
+    const myToken = loginInfo.token;
+    setToken(myToken);
     setLoginMessage(loginInfo);
-    console.log(username, password); 
     onOpen();
-    //navigate("/Home");
   };
   const navToRegister = async (e) =>{
     e.preventDefault();

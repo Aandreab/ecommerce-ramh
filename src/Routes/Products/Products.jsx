@@ -14,14 +14,11 @@ export default function Products() {
         <Container className="all-comics-container">
           <h1 className='main-comics-header'>COMICS</h1>
           <Row md={4} xs={1} lg={5}>
-
             {comics.map(item => (
               <Col key={item.id}>
                 <Singleproduct{...item} />
               </Col>
-
             ))}
-
           </Row>
         </Container>
       </div>

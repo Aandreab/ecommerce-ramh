@@ -31,11 +31,9 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
-  .nav-icons{
-    margin-right: 17px;
-    color: #777777;
-  }
+ .right-nav-links{
+  margin-right: 17px;
+ }
 
-  .nav-icons:hover {
-    color: black;
-  }
+
+

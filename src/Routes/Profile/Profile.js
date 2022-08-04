@@ -109,7 +109,7 @@ export const Profile = () => (
               boxSize="full"
               objectFit="cover"
               src="https://d1466nnw0ex81e.cloudfront.net/n_iv/600/5131953.jpg"
-              alt="Lady at work"
+              alt="The Batman Who Laughs"
             />
           </Box>
         </Stack>

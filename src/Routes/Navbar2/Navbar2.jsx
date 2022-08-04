@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { AiOutlineLogout } from "react-icons/ai";
 export default function Navbar2() {
   const [token, setToken] = useState("");
 
@@ -44,7 +45,13 @@ export default function Navbar2() {
           </div>
           <div className="navbar-right">
             {/* {token ? <Link className='right-nav-links' to="/Profile"><CgProfile className='nav-icons' size={20} /></Link>: null} */}
-            <Link className="right-nav-links" to="/Profile">
+            <Link className="right-nav-links" to="/Login">
+            {token ? <Button className="rounded-circle" variant="outline-danger" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }} onClick={() => {
+                setToken('')
+                localStorage.removeItem('token')
+              }}><AiOutlineLogout className="nav-icons" size={20} /> </Button>  : null}
+            </Link>
+            <Link className="right-nav-links" to="/Register">
               <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
                 <CgProfile className="nav-icons" size={20} />
               </Button>

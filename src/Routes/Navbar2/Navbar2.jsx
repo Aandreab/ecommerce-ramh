@@ -3,7 +3,7 @@ import * as React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import Products from "../Products/Products.jsx";
 import Home from "../Home/Home.jsx";
-import Profile from "../Profile/Profile.jsx";
+import Profile from "../Profile/Profile.js";
 import Newsletter from "../Newsletter/Newsletter.jsx";
 import About from "../About/About.jsx";
 import Cart from "../Cart/Cart.jsx";

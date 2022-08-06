@@ -40,17 +40,17 @@ export default function Register({ setToken }) {
       setRegisterMessage(registerInfo);
       onOpen();
     }
-    setToken(registerInfo)
+    setToken(registerInfo);
     setUsername("");
     setPassword("");
     window.localStorage.setItem("token", registerInfo.token);
     window.localStorage.setItem("username", username);
     setRegisterMessage(registerInfo);
     onOpen();
-  }
-  const closeFunc = ()=>{
-    navigate("/home")
-  }
+  };
+  const closeFunc = () => {
+    navigate("/home");
+  };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();

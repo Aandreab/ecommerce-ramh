@@ -24,6 +24,7 @@ import robert from '../assets/robert.jpeg'
 import comicon from '../assets/comicon.jpeg'
 import newbac from '../assets/newbac.jpeg'
 import newbac2 from '../assets/newbac2.jpeg'
+import logo from '../assets/real-logo.png'
 export default {
     background,
     newsletter,
@@ -50,6 +51,7 @@ export default {
     robert,
     comicon,
     newbac,
-    newbac2
+    newbac2,
+    logo
 
 }

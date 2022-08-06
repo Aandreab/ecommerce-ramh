@@ -21,7 +21,7 @@ export default function Home() {
   }
   return (
     <main>
-      <div className="home-container">
+      <div className="main-container">
         <Carousel fade>
           <Carousel.Item>
             <img

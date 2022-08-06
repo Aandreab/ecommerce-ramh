@@ -30,7 +30,10 @@ const bcrypt = require("bcrypt"); //Extra credit attempt!
 async function getUser({ username, password }) {
   try {
     const user = await getUserByUsername(username);
+    console.log(user);
     const hashedPassword = user.password;
+    console.log(hashedPassword);
+    console.log(password)
     const passwordsMatch = await bcrypt.compare(password, hashedPassword);
 
     if (passwordsMatch) {
@@ -60,6 +63,7 @@ async function getUserById(id) {
 
 async function getUserByUsername(username) {
   try {
+    console.log(username);
     const {
       rows: [user],
     } = await client.query(

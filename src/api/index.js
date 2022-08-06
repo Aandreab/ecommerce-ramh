@@ -29,16 +29,14 @@ export const loginUser = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
-          username,
-          password,
-        },
+        username,
+        password,
       }),
     });
 
-    const token  = await response.json();
+    const data = await response.json();
     //console.log(token)
-    return token;
+    return data;
   } catch (err) {
     console.error(err);
   }

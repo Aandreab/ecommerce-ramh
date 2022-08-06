@@ -11,8 +11,10 @@ import {
   useColorModeValue, 
   useBreakpointValue,
 } from '@chakra-ui/react'
+import "./Profile.css"
 // import Footer from '../Footer/Footer';
 import * as React from 'react'
+import Footer from '../Footer/Footer'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -27,7 +29,8 @@ const Profile = () => {
     // }
      
  return ( 
- <Box>
+   <main>
+ <div className='main-container'>
     <Box
     as="section"
     bg="bg-surface"
@@ -67,6 +70,36 @@ const Profile = () => {
           md: '6',
         }}
       >
+
+<Box
+      px={{
+        base: '4',
+        md: '6',
+      }}
+      py={{
+        base: '5',
+        md: '6',
+      }}
+      bg="bg-surface"
+      borderRadius="lg"
+      boxShadow={useColorModeValue('lg', 'lg-dark')}
+      className="pulse"
+    >
+      <Stack onClick={() => navigate("/home", { replace: true })}>
+        <Text fontSize="sm" color="muted">
+          Home
+        </Text>
+        <Heading
+          size={useBreakpointValue({
+            base: 'sm',
+            md: 'md',
+          })}
+        >
+          Head back Home
+        </Heading>
+      </Stack>
+
+    </Box>
         <Box
       px={{
         base: '4',
@@ -79,9 +112,9 @@ const Profile = () => {
       bg="bg-surface"
       borderRadius="lg"
       boxShadow={useColorModeValue('lg', 'lg-dark')}
-      onClick={() => navigate("/cart", { replace: true })}
+      className="pulse"
     >
-      <Stack>
+      <Stack onClick={() => navigate("/cart", { replace: true })}>
         <Text fontSize="sm" color="muted">
           Cart
         </Text>
@@ -95,6 +128,36 @@ const Profile = () => {
         </Heading>
       </Stack>
     </Box>
+    <Box
+      px={{
+        base: '4',
+        md: '6',
+      }}
+      py={{
+        base: '5',
+        md: '6',
+      }}
+      bg="bg-surface"
+      borderRadius="lg"
+      boxShadow={useColorModeValue('xl', 'xl-dark')}
+      className="pulse"
+    >
+      <Stack onClick={() => navigate("/home", { replace: true })}>
+        <Text fontSize="sm" color="muted">
+          Favorites
+        </Text>
+        <Heading
+          size={useBreakpointValue({
+            base: 'sm',
+            md: 'md',
+          })}
+        >
+         View my Favorites
+        </Heading>
+      </Stack>
+
+    </Box>
+    
       </SimpleGrid>
     </Container>
   </Box>
@@ -136,8 +199,9 @@ const Profile = () => {
             </Box>
           </Flex>
         </Box>
-        {/* <Footer zIndex={"-1"}/> */}
-      </Box>
+      </div>
+      <Footer/> 
+      </main>
 )}
 
 export default Profile

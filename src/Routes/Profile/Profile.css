@@ -1,0 +1,7 @@
+.pulse:hover, 
+.pulse:focus {
+    border: 2px solid #000000;
+    color: #000000;
+    background: #fff;
+}
+

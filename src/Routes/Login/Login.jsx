@@ -6,7 +6,6 @@ import "./Login.css";
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControl,
   FormLabel,
@@ -30,7 +29,7 @@ export default function Login({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState({});
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const navigate = useNavigate();
 
   // const handleSubmit = async (e) => {
@@ -75,6 +74,14 @@ export default function Login({ setToken }) {
     e.preventDefault();
     navigate("/Register")
   }
+  const closeFunc = ()=>{
+    console.log("attempting to change page")
+    navigate("/home")
+  }
+  // const navToHome = async (e) =>{
+  //   e.preventDefault();
+  //   navigate("/home")
+  // }
   return (
     <Box h={"100vh"} bg={"white"}>
       <Container
@@ -129,9 +136,6 @@ export default function Login({ setToken }) {
                 />
               </FormControl>
             </Stack>
-            <HStack justify="space-between">
-              <Checkbox defaultChecked>Remember me</Checkbox>
-            </HStack>
             <Stack spacing="4">
               <Button type="submit" variant="solid" size="lg" bg={"white"} onClick={(e) => onLogin(e, setToken, username, password)}>
                 Sign in
@@ -146,7 +150,7 @@ export default function Login({ setToken }) {
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={closeFunc}>
         <ModalOverlay
           bg="none"
           backdropFilter="auto"
@@ -160,7 +164,7 @@ export default function Login({ setToken }) {
             <Text fontWeight={400}>{loginMessage.message}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={closeFunc}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

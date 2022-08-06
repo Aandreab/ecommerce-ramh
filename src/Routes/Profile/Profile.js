@@ -1,27 +1,23 @@
 import { Box, Container, SimpleGrid, Divider, Stack, Text, Heading, Flex,
-    Img} from '@chakra-ui/react'
+    Img, useColorModeValue, useBreakpointValue} from '@chakra-ui/react'
 // import Footer from "../Footer/Footer.jsx"
 // import "../Footer/Footer.css"
 import * as React from 'react'
-import Stat from './ProfileContent'
 
-const stats = [
-  {
-    label: 'Recent Orders',
-    value: 'The Batman Who Laughs',
-  },
-  {
-    label: 'Recently Viewed',
-    value: 'Superman: Last son of Krypton',
-  },
-  {
-    label: 'Cart',
-    value: 'Click here for your Cart',
-  },
-]
+import { useNavigate } from 'react-router-dom'
 
-export const Profile = () => (
-  <Box>
+
+
+
+const Profile = () => {
+     const navigate = useNavigate();
+    // const handleNavToCart = () => {
+    //     e.preventDefault(); 
+    //     Navigate("/Cart")
+    // }
+     
+ return ( 
+ <Box>
     <Box
     as="section"
     bg="bg-surface"
@@ -42,7 +38,8 @@ export const Profile = () => (
         <Divider />
       </Stack>
     </Container>
-  </Box><Box
+  </Box>
+  <Box
     as="section"
     py={{
       base: '4',
@@ -60,9 +57,34 @@ export const Profile = () => (
           md: '6',
         }}
       >
-        {stats.map(({ label, value }) => (
-          <Stat key={label} label={label} value={value} />
-        ))}
+        <Box
+      px={{
+        base: '4',
+        md: '6',
+      }}
+      py={{
+        base: '5',
+        md: '6',
+      }}
+      bg="bg-surface"
+      borderRadius="lg"
+      boxShadow={useColorModeValue('lg', 'lg-dark')}
+      onClick={() => navigate("/cart", { replace: true })}
+    >
+      <Stack>
+        <Text fontSize="sm" color="muted">
+          Cart
+        </Text>
+        <Heading
+          size={useBreakpointValue({
+            base: 'sm',
+            md: 'md',
+          })}
+        >
+          View your Cart
+        </Heading>
+      </Stack>
+    </Box>
       </SimpleGrid>
     </Container>
   </Box>
@@ -106,6 +128,6 @@ export const Profile = () => (
     </Box>
   {/* <Footer zIndex={"-1"}/> */}
   </Box>
-)
+ )}
 
 export default Profile; 

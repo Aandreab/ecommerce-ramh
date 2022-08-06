@@ -4,7 +4,7 @@ import { images } from "../../constants";
 import { Link, Routes, Route } from "react-router-dom";
 import Products from "../Products/Products.jsx";
 import Home from "../Home/Home.jsx";
-import Profile from "../Profile/Profile.js";
+import Profile from "../Profile/Profile.jsx";
 import Newsletter from "../Newsletter/Newsletter.jsx";
 import About from "../About/About.jsx";
 import Cart from "../Cart/Cart.jsx";

@@ -30,7 +30,7 @@ export default function Register({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [registerMessage, setRegisterMessage] = useState({});
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const navigate = useNavigate();
 
   const onRegister = async (e) => {
@@ -47,8 +47,10 @@ export default function Register({ setToken }) {
     window.localStorage.setItem("username", username);
     setRegisterMessage(registerInfo);
     onOpen();
-    //navigate("/Home");
-  };
+  }
+  const closeFunc = ()=>{
+    navigate("/home")
+  }
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -140,7 +142,7 @@ export default function Register({ setToken }) {
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={closeFunc}>
         <ModalOverlay
           bg="none"
           backdropFilter="auto"
@@ -154,7 +156,7 @@ export default function Register({ setToken }) {
             <Text fontWeight={400}>{registerMessage.message}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={closeFunc}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

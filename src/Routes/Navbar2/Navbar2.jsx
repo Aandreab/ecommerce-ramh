@@ -10,7 +10,7 @@ import About from "../About/About.jsx";
 import Cart from "../Cart/Cart.jsx";
 import Login from "../Login/Login";
 import Register from "../Register/Register.jsx";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
@@ -31,12 +31,8 @@ export default function Navbar2() {
       <nav className="navbar-two">
         <div className="navbar-container">
           <div className="navbar-left">
-          <Link className="left-nav-links" to="/Home">
-          <img
-              className="logo"
-              src={images.logo}
-              alt="logo"
-            />
+            <Link className="left-nav-links" to="/Home">
+              <img className="logo" src={images.logo} alt="logo" />
             </Link>
             <Link className="left-nav-links" to="/Home">
               HOME
@@ -54,28 +50,82 @@ export default function Navbar2() {
           <div className="navbar-right">
             {/* {token ? <Link className='right-nav-links' to="/Profile"><CgProfile className='nav-icons' size={20} /></Link>: null} */}
             <Link className="right-nav-links" to="/Login">
-              {token ? <Button className="rounded-circle" variant="outline-danger" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }} onClick={() => {
-                setToken('')
-                localStorage.removeItem('token')
-              }}><AiOutlineLogout className="nav-icons" size={20} /> </Button> : null}
+              {token ? (
+                <Button
+                  className="rounded-circle"
+                  variant="outline-danger"
+                  size="sm"
+                  style={{
+                    width: "2.4rem",
+                    height: "2.4rem",
+                    position: "relative",
+                  }}
+                  onClick={() => {
+                    setToken("");
+                    localStorage.removeItem("token");
+                  }}
+                >
+                  <AiOutlineLogout className="nav-icons" size={20} />{" "}
+                </Button>
+              ) : null}
             </Link>
-            {token ? <Link className="right-nav-links" to="/Profile">
-              <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
-                <CgProfile className="nav-icons" size={20} />
-              </Button>
-            </Link> : null}
-            {!token ?<Link className="right-nav-links" to="/Register">
-              <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
-                <CgProfile className="nav-icons" size={20} />
-              </Button>
-            </Link> : null}
+            {token ? (
+              <Link className="right-nav-links" to="/Profile">
+                <Button
+                  className="rounded-circle"
+                  variant="outline-secondary"
+                  size="sm"
+                  style={{
+                    width: "2.4rem",
+                    height: "2.4rem",
+                    position: "relative",
+                  }}
+                >
+                  <CgProfile className="nav-icons" size={20} />
+                </Button>
+              </Link>
+            ) : null}
+            {!token ? (
+              <Link className="right-nav-links" to="/Register">
+                <Button
+                  className="rounded-circle"
+                  variant="outline-secondary"
+                  size="sm"
+                  style={{
+                    width: "2.4rem",
+                    height: "2.4rem",
+                    position: "relative",
+                  }}
+                >
+                  <CgProfile className="nav-icons" size={20} />
+                </Button>
+              </Link>
+            ) : null}
             <Link className="right-nav-links" to="/">
-              <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
+              <Button
+                className="rounded-circle"
+                variant="outline-secondary"
+                size="sm"
+                style={{
+                  width: "2.4rem",
+                  height: "2.4rem",
+                  position: "relative",
+                }}
+              >
                 <FaRegHeart className="nav-icons" size={20} />
               </Button>
             </Link>
             <Link className="right-nav-links" to="/Cart">
-              <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
+              <Button
+                className="rounded-circle"
+                variant="outline-secondary"
+                size="sm"
+                style={{
+                  width: "2.4rem",
+                  height: "2.4rem",
+                  position: "relative",
+                }}
+              >
                 <HiOutlineShoppingCart className="nav-icons" size={20} />
                 <div
                   className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
@@ -88,10 +138,11 @@ export default function Navbar2() {
                     right: 0,
                     transform: "translate(25%, 25%)",
                   }}
-                >3</div>
+                >
+                  3
+                </div>
               </Button>
             </Link>
-         
           </div>
         </div>
       </nav>

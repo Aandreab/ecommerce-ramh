@@ -51,10 +51,10 @@ export default function Login({ setToken }) {
   //   window.localStorage.setItem("token", loginInfo.token);
   //   window.localStorage.setItem("username", username);
   //   setLoginMessage(loginInfo);
-  //   console.log(username, password); 
+  //   console.log(username, password);
   //   onOpen();
   //   //navigate("/Home");
-  // }; 
+  // };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -70,14 +70,13 @@ export default function Login({ setToken }) {
     setLoginMessage(loginInfo);
     onOpen();
   };
-  const navToRegister = async (e) =>{
+  const navToRegister = async (e) => {
     e.preventDefault();
-    navigate("/Register")
-  }
-  const closeFunc = ()=>{
-    
-    navigate("/home")
-  }
+    navigate("/Register");
+  };
+  const closeFunc = () => {
+    navigate("/home");
+  };
   // const navToHome = async (e) =>{
   //   e.preventDefault();
   //   navigate("/home")
@@ -137,13 +136,23 @@ export default function Login({ setToken }) {
               </FormControl>
             </Stack>
             <Stack spacing="4">
-              <Button type="submit" variant="solid" size="lg" bg={"white"} onClick={(e) => onLogin(e, setToken, username, password)}>
+              <Button
+                type="submit"
+                variant="solid"
+                size="lg"
+                bg={"white"}
+                onClick={(e) => onLogin(e, setToken, username, password)}
+              >
                 Sign in
               </Button>
-              <Button onClick={navToRegister}
+              <Button
+                onClick={navToRegister}
                 variant="secondary"
                 iconSpacing="3"
-              > Don't have an account?<p className="login-from-reg-link">Sign Up</p>
+              >
+                {" "}
+                Don't have an account?
+                <p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>

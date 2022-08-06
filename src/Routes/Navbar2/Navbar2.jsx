@@ -1,5 +1,6 @@
 import "./Navbar2.css";
 import * as React from "react";
+import { images } from "../../constants";
 import { Link, Routes, Route } from "react-router-dom";
 import Products from "../Products/Products.jsx";
 import Home from "../Home/Home.jsx";
@@ -30,6 +31,13 @@ export default function Navbar2() {
       <nav className="navbar-two">
         <div className="navbar-container">
           <div className="navbar-left">
+          <Link className="left-nav-links" to="/Home">
+          <img
+              className="logo"
+              src={images.logo}
+              alt="logo"
+            />
+            </Link>
             <Link className="left-nav-links" to="/Home">
               HOME
             </Link>
@@ -46,16 +54,21 @@ export default function Navbar2() {
           <div className="navbar-right">
             {/* {token ? <Link className='right-nav-links' to="/Profile"><CgProfile className='nav-icons' size={20} /></Link>: null} */}
             <Link className="right-nav-links" to="/Login">
-            {token ? <Button className="rounded-circle" variant="outline-danger" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }} onClick={() => {
+              {token ? <Button className="rounded-circle" variant="outline-danger" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }} onClick={() => {
                 setToken('')
                 localStorage.removeItem('token')
-              }}><AiOutlineLogout className="nav-icons" size={20} /> </Button>  : null}
+              }}><AiOutlineLogout className="nav-icons" size={20} /> </Button> : null}
             </Link>
-            <Link className="right-nav-links" to="/Register">
+            {token ? <Link className="right-nav-links" to="/Profile">
               <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
                 <CgProfile className="nav-icons" size={20} />
               </Button>
-            </Link>
+            </Link> : null}
+            {!token ?<Link className="right-nav-links" to="/Register">
+              <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
+                <CgProfile className="nav-icons" size={20} />
+              </Button>
+            </Link> : null}
             <Link className="right-nav-links" to="/">
               <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative" }}>
                 <FaRegHeart className="nav-icons" size={20} />
@@ -78,6 +91,7 @@ export default function Navbar2() {
                 >3</div>
               </Button>
             </Link>
+         
           </div>
         </div>
       </nav>

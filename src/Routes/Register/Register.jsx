@@ -47,10 +47,8 @@ export default function Register({ setToken }) {
     window.localStorage.setItem("username", username);
     setRegisterMessage(registerInfo);
     onOpen();
-    //navigate("/Home");
   }
   const closeFunc = ()=>{
-    console.log("attempting to change page")
     navigate("/home")
   }
 

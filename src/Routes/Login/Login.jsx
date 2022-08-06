@@ -75,7 +75,7 @@ export default function Login({ setToken }) {
     navigate("/Register")
   }
   const closeFunc = ()=>{
-    console.log("attempting to change page")
+    
     navigate("/home")
   }
   // const navToHome = async (e) =>{

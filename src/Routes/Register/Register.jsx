@@ -27,7 +27,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function Register({ setToken }) {
-  const [username, setUsername] = useState("");
+  const [userEmail, setuserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerMessage, setRegisterMessage] = useState({});
   const { isOpen, onOpen } = useDisclosure();
@@ -35,16 +35,16 @@ export default function Register({ setToken }) {
 
   const onRegister = async (e) => {
     e.preventDefault();
-    const registerInfo = await registerUser(username, password);
+    const registerInfo = await registerUser(userEmail, password);
     if (registerInfo.error) {
       setRegisterMessage(registerInfo);
       onOpen();
     }
     setToken(registerInfo);
-    setUsername("");
+    setuserEmail("");
     setPassword("");
     window.localStorage.setItem("token", registerInfo.token);
-    window.localStorage.setItem("username", username);
+    window.localStorage.setItem("userEmail", userEmail);
     setRegisterMessage(registerInfo);
     onOpen();
   };
@@ -54,9 +54,9 @@ export default function Register({ setToken }) {
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
-  //   const registerInfo = await registerUser(username, password);
+  //   const registerInfo = await registerUser(userEmail, password);
   //   setToken(registerInfo);
-  //   setUsername("");
+  //   setuserEmail("");
   //   setPassword("");
   //   navigate("/Home");
   // };
@@ -99,13 +99,13 @@ export default function Register({ setToken }) {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="username">Create Username</FormLabel>
+                <FormLabel htmlFor="userEmail">Create Email</FormLabel>
                 <Input
-                  id="username"
-                  placeholder="Create Username"
-                  type="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  id="userEmail"
+                  placeholder="Create Email"
+                  type="Email"
+                  value={userEmail}
+                  onChange={(e) => setuserEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl>
@@ -128,7 +128,7 @@ export default function Register({ setToken }) {
                 variant="solid"
                 size="lg"
                 bg={"white"}
-                onClick={(e) => onRegister(e, setToken, username, password)}
+                onClick={(e) => onRegister(e, setToken, userEmail, password)}
               >
                 Sign up
               </Button>

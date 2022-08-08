@@ -145,10 +145,10 @@ const Profile = () => {
                       md: "md",
                     })}
                   >
-                    Favorites
+                    Recent
                   </Heading>
                   <Text fontSize="sm" color="muted">
-                    View my Favorites
+                    View my Recent Orders
                   </Text>
                 </Stack>
               </Box>
@@ -209,7 +209,7 @@ const Profile = () => {
                 boxShadow={useColorModeValue("lg", "lg-dark")}
                 className="pulse"
               >
-                <Stack onClick={() => navigate("/home", { replace: true })}>
+                <Stack onClick={() => navigate("/adminUsers", { replace: true })}>
                   <Heading
                     size={useBreakpointValue({
                       base: "sm",
@@ -237,7 +237,7 @@ const Profile = () => {
                 boxShadow={useColorModeValue("lg", "lg-dark")}
                 className="pulse"
               >
-                <Stack onClick={() => navigate("/cart", { replace: true })}>
+                <Stack onClick={() => navigate("/adminProducts", { replace: true })}>
                   <Heading
                     size={useBreakpointValue({
                       base: "sm",
@@ -265,7 +265,7 @@ const Profile = () => {
                 boxShadow={useColorModeValue("xl", "xl-dark")}
                 className="pulse"
               >
-                <Stack onClick={() => navigate("/home", { replace: true })}>
+                <Stack onClick={() => navigate("/adminAnalytics", { replace: true })}>
                   <Heading
                     size={useBreakpointValue({
                       base: "sm",

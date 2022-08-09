@@ -9,6 +9,7 @@ import { Button, Card } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../api';
 import { formatCurrency } from '../../utilities/formatCurrency';
+import Rating from '../../utilities/Rating';
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
@@ -26,7 +27,7 @@ export default function Products() {
   useEffect(() => {
     productHandler();
   }, [])
-  const quantity = 1
+  const quantity = 0
   return (
     <main>
       <div className='products-container'>
@@ -48,20 +49,15 @@ export default function Products() {
                       <div>{product.title}</div>
                       <div>{formatCurrency(product.price)}</div>
                     </Card.Title>
+                    <div className='product-card-rating'>
+                      <Rating 
+                      value={product.rating} 
+                      text={`${product.inventory} reviews`}/>
+                    </div>
                     <div>
                       {quantity === 0 ? (
                         <Button size='sm'>+ Add To Cart</Button>
-                      ) : (
-                        <div className='singleProduct-add-remove'>
-                          <Button>-</Button>
-                          <div>
-                            <span>{quantity}</span>
-                            In cart
-                          </div>
-                          <Button>+</Button>
-                          <Button variant='danger' size='sm'>Remove</Button>
-                        </div>
-                      )}
+                      ) : null}
                     </div>
                   </Card.Body>
                 </Card>

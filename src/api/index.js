@@ -112,7 +112,7 @@ export const promoteAdmin = async (token) => {
 
 //fetch calls for manipulating products to display in admin section
 
-export const productsGrab = async () => {
+export const getProducts = async () => {
   try{
     const response = await fetch(`${BASE_URL}/products/products`, {
       method: "GET",

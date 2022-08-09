@@ -14,7 +14,7 @@ export const registerUser = async (userEmail, password) => {
         password,
       }),
     });
-    const token  = await response.json();
+    const token = await response.json();
     console.log(token);
     return token;
   } catch (error) {
@@ -48,7 +48,7 @@ export const loginUser = async (userEmail, password) => {
 
 //fetch call for adminCheck
 export const getMyInfo = async (token) => {
-  try{
+  try {
     const response = await fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
@@ -56,17 +56,17 @@ export const getMyInfo = async (token) => {
         Authorization: `Bearer ${token}`
       },
     });
-    const data = await response.json(); 
-    return data; 
+    const data = await response.json();
+    return data;
   } catch (err) {
     console.error(err);
   }
-}; 
+};
 
 
 //fetch call for grabbing all users to display in admin section
 export const usersGrab = async () => {
-  try{
+  try {
     const response = await fetch(`${BASE_URL}/admin/users/all-users`, {
       method: "GET",
       headers: {
@@ -82,8 +82,8 @@ export const usersGrab = async () => {
 
 //fetch calls for editing users
 export const removeAdmin = async (token) => {
-  try{
-     await fetch(`${BASE_URL}/admin/users/remove`, {
+  try {
+    await fetch(`${BASE_URL}/admin/users/remove`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -95,8 +95,8 @@ export const removeAdmin = async (token) => {
   }
 };
 export const promoteAdmin = async (token) => {
-  try{
-     await fetch(`${BASE_URL}/admin/users/promote`, {
+  try {
+    await fetch(`${BASE_URL}/admin/users/promote`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -110,10 +110,10 @@ export const promoteAdmin = async (token) => {
 
 //PRODUCTS
 
-//fetch calls for manipulating products to display in admin section
+//get all products
 
 export const getProducts = async () => {
-  try{
+  try {
     const response = await fetch(`${BASE_URL}/products/products`, {
       method: "GET",
       headers: {
@@ -126,3 +126,28 @@ export const getProducts = async () => {
     console.error(err);
   }
 };
+
+//CART 
+
+//add to cart
+export const addToCart = async (userId, productPrice, productId, quantity) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId, 
+        productPrice, 
+        productId, 
+        quantity
+      }),
+    });
+    const data = await response.json()
+    return data;
+  } catch (err) {
+    console.error(err);
+
+  }
+}

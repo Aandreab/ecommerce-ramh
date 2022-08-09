@@ -2,7 +2,7 @@ import {
   Box, Container, SimpleGrid, Divider, Stack, Text, Heading, Flex,
   Img
 } from '@chakra-ui/react'
-import Footer from '../Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import * as React from 'react'
 import Stat from './ProfileContent'
 

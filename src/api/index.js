@@ -41,3 +41,13 @@ export const loginUser = async (username, password) => {
     console.error(err);
   }
 };
+
+export const getProducts = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/products/products`)
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}

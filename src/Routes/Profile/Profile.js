@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import Footer from '../../components/Footer/Footer';
 import * as React from 'react'
-import Stat from './ProfileContent'
+//import Stat from './ProfileContent'
 
 const stats = [
   {

@@ -27,34 +27,36 @@ import {
 } from "@chakra-ui/react";
 
 export default function Register({ setToken }) {
-  const [username, setUsername] = useState("");
+  const [userEmail, setuserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registerMessage, setRegisterMessage] = useState({});
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const navigate = useNavigate();
 
   const onRegister = async (e) => {
     e.preventDefault();
-    const registerInfo = await registerUser(username, password);
+    const registerInfo = await registerUser(userEmail, password);
     if (registerInfo.error) {
       setRegisterMessage(registerInfo);
       onOpen();
     }
-    setToken(registerInfo)
-    setUsername("");
+    setToken(registerInfo);
+    setuserEmail("");
     setPassword("");
     window.localStorage.setItem("token", registerInfo.token);
-    window.localStorage.setItem("username", username);
+    window.localStorage.setItem("userEmail", userEmail);
     setRegisterMessage(registerInfo);
     onOpen();
-    //navigate("/Home");
+  };
+  const closeFunc = () => {
+    navigate("/home");
   };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
-  //   const registerInfo = await registerUser(username, password);
+  //   const registerInfo = await registerUser(userEmail, password);
   //   setToken(registerInfo);
-  //   setUsername("");
+  //   setuserEmail("");
   //   setPassword("");
   //   navigate("/Home");
   // };
@@ -97,13 +99,13 @@ export default function Register({ setToken }) {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="username">Create Username</FormLabel>
+                <FormLabel htmlFor="userEmail">Create Email</FormLabel>
                 <Input
-                  id="username"
-                  placeholder="Create Username"
-                  type="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  id="userEmail"
+                  placeholder="Create Email"
+                  type="Email"
+                  value={userEmail}
+                  onChange={(e) => setuserEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl>
@@ -126,7 +128,7 @@ export default function Register({ setToken }) {
                 variant="solid"
                 size="lg"
                 bg={"white"}
-                onClick={(e) => onRegister(e, setToken, username, password)}
+                onClick={(e) => onRegister(e, setToken, userEmail, password)}
               >
                 Sign up
               </Button>
@@ -140,7 +142,7 @@ export default function Register({ setToken }) {
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={closeFunc}>
         <ModalOverlay
           bg="none"
           backdropFilter="auto"
@@ -154,7 +156,7 @@ export default function Register({ setToken }) {
             <Text fontWeight={400}>{registerMessage.message}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={closeFunc}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

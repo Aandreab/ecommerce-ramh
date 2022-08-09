@@ -6,7 +6,6 @@ import "./Login.css";
 import {
   Box,
   Button,
-  Checkbox,
   Container,
   FormControl,
   FormLabel,
@@ -27,54 +26,63 @@ import {
 } from "@chakra-ui/react";
 
 export default function Login({ setToken }) {
-  const [username, setUsername] = useState("");
+  const [userEmail, setuserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState({});
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen } = useDisclosure();
   const navigate = useNavigate();
 
   // const handleSubmit = async (e) => {
   //   e.ppreventDefault();
-  //   const loginInfo = await loginUser(username, password);
+  //   const loginInfo = await loginUser(userEmail, password);
   //   setToken(loginInfo);
-  //   setUsername("");
+  //   setuserEmail("");
   //   setPassword("");
   //   navigate("/Home");
   // };
   // const onLogin = async (e) => {
   //   e.preventDefault();
-  //   const loginInfo = await loginUser(username, password);
+  //   const loginInfo = await loginUser(userEmail, password);
   //   if (loginInfo.error) {
   //     setLoginMessage(loginInfo);
   //     onOpen();
   //   }
   //   setToken(loginInfo)
   //   window.localStorage.setItem("token", loginInfo.token);
-  //   window.localStorage.setItem("username", username);
+  //   window.localStorage.setItem("userEmail", userEmail);
   //   setLoginMessage(loginInfo);
-  //   console.log(username, password); 
+  //   console.log(userEmail, password);
   //   onOpen();
   //   //navigate("/Home");
-  // }; 
+  // };
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const loginInfo = await loginUser(username, password);
+    const loginInfo = await loginUser(userEmail, password);
+    console.log(loginInfo);
     if (loginInfo.error) {
       setLoginMessage(loginInfo);
       onOpen();
     }
     window.localStorage.setItem("token", loginInfo.token);
-    window.localStorage.setItem("username", username);
+    window.localStorage.setItem("userEmail", userEmail);
     const myToken = loginInfo.token;
+    console.log(myToken);
     setToken(myToken);
     setLoginMessage(loginInfo);
     onOpen();
   };
-  const navToRegister = async (e) =>{
+  const navToRegister = async (e) => {
     e.preventDefault();
-    navigate("/Register")
-  }
+    navigate("/Register");
+  };
+  const closeFunc = () => {
+    navigate("/home");
+  };
+  // const navToHome = async (e) =>{
+  //   e.preventDefault();
+  //   navigate("/home")
+  // }
   return (
     <Box h={"100vh"} bg={"white"}>
       <Container
@@ -109,13 +117,13 @@ export default function Login({ setToken }) {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="username">Username</FormLabel>
+                <FormLabel htmlFor="userEmail">Email</FormLabel>
                 <Input
-                  id="username"
-                  placeholder="Username"
-                  type="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  id="userEmail"
+                  placeholder="Email"
+                  type="Email"
+                  value={userEmail}
+                  onChange={(e) => setuserEmail(e.target.value)}
                 />
               </FormControl>
               <FormControl>
@@ -129,24 +137,31 @@ export default function Login({ setToken }) {
                 />
               </FormControl>
             </Stack>
-            <HStack justify="space-between">
-              <Checkbox defaultChecked>Remember me</Checkbox>
-            </HStack>
             <Stack spacing="4">
-              <Button type="submit" variant="solid" size="lg" bg={"white"} onClick={(e) => onLogin(e, setToken, username, password)}>
+              <Button
+                type="submit"
+                variant="solid"
+                size="lg"
+                bg={"white"}
+                onClick={(e) => onLogin(e, setToken, userEmail, password)}
+              >
                 Sign in
               </Button>
-              <Button onClick={navToRegister}
+              <Button
+                onClick={navToRegister}
                 variant="secondary"
                 iconSpacing="3"
-              > Don't have an account?<p className="login-from-reg-link">Sign Up</p>
+              >
+                {" "}
+                Don't have an account?
+                <p className="login-from-reg-link">Sign Up</p>
               </Button>
             </Stack>
           </Stack>
           <HStack spacing="1" justify="center"></HStack>
         </Stack>
       </Container>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={closeFunc}>
         <ModalOverlay
           bg="none"
           backdropFilter="auto"
@@ -160,7 +175,7 @@ export default function Login({ setToken }) {
             <Text fontWeight={400}>{loginMessage.message}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={closeFunc}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

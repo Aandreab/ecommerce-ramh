@@ -10,6 +10,9 @@ import About from "../About/About.jsx";
 import Cart from "../Cart/Cart.jsx";
 import Login from "../Login/Login";
 import Register from "../Register/Register.jsx";
+import AdminUsers from "../Admin/AdminUsers/AdminUsers.jsx";
+import AdminProducts from "../Admin/AdminProducts/AdminProducts.jsx";
+import AdminAnalytics from "../Admin/AdminAnalytics/AdminAnalytics.jsx"; 
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
@@ -155,6 +158,9 @@ export default function Navbar2() {
         <Route path="cart" element={<Cart />} />
         <Route path="register" element={<Register setToken={setToken} />} />
         <Route path="login" element={<Login setToken={setToken} />} />
+        <Route path="adminUsers" element={<AdminUsers token={token}/> } />
+        <Route path="adminProducts" element={<AdminProducts token={token} /> } />
+        <Route path="adminAnalytics" element={<AdminAnalytics token={token} /> } />
       </Routes>
     </div>
   );

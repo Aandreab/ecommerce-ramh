@@ -59,6 +59,7 @@ export default function Login({ setToken }) {
   const onLogin = async (e) => {
     e.preventDefault();
     const loginInfo = await loginUser(userEmail, password);
+    console.log(loginInfo);
     if (loginInfo.error) {
       setLoginMessage(loginInfo);
       onOpen();
@@ -66,6 +67,7 @@ export default function Login({ setToken }) {
     window.localStorage.setItem("token", loginInfo.token);
     window.localStorage.setItem("userEmail", userEmail);
     const myToken = loginInfo.token;
+    console.log(myToken);
     setToken(myToken);
     setLoginMessage(loginInfo);
     onOpen();

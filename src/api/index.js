@@ -65,13 +65,12 @@ export const getMyInfo = async (token) => {
 
 
 //fetch call for grabbing all users to display in admin section
-export const adminUsers = async (token) => {
+export const usersGrab = async () => {
   try{
-    const response = await fetch(`${BASE_URL}/admin/all-users`, {
+    const response = await fetch(`${BASE_URL}/admin/users/all-users`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
       },
     });
     const data = await response.json();
@@ -113,9 +112,17 @@ export const promoteAdmin = async (token) => {
 
 //fetch calls for manipulating products to display in admin section
 
-//
-// export const adminProducts = async (token) => {
-//   try{
-//     const response = await fetch(`${BASE_URL}/`)
-//   }
-// }
+export const productsGrab = async () => {
+  try{
+    const response = await fetch(`${BASE_URL}/products/products`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};

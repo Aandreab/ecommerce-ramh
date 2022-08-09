@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Box, Button, Stack, Text, SimpleGrid } from "@chakra-ui/react";
+import { Center, Button, Stack, Text, SimpleGrid, Avatar} from "@chakra-ui/react";
 
 
 
@@ -29,45 +29,32 @@ const AdminUsers = () => {
 
     return (
         <SimpleGrid
-        columns={{
-          base: 1,
-          md: 2,
-          lg: 3,
-        }}
+        columns={{ base: 1, md: 2, lg: 3 }}
         columnGap="8"
-        rowGap={{
-          base: '6',
-          md: '8',
-          lg: '16',
-        }}
+        rowGap={{ base: '10', lg: '16' }}
       >
         {users.map((user) => (
-          <Box
-            key={user.id}
-            bg="bg-surface"
-            p="6"
-            borderRadius="md"
-          >
-            <Stack spacing="4" align="center" textAlign="center">
-              <Stack>
-                <Stack
-                  spacing={{
-                    base: '4',
-                    md: '5',
-                  }}
-                  align="center"
-                >
-                  <Box>
-                    <Text fontWeight="medium" fontSize="lg">
-                      {user.userEmail}
+          <Stack key={user.id} spacing="4">
+            <Stack spacing="5">
+            <Center>
+            <Avatar
+                    boxSize={{
+                      base: '16',
+                      md: '20',
+                    }}
+                  />
+                  </Center>
+              <Stack spacing="1">
+                <Center>
+                    <Text fontWeight="medium" fontSize={{ base: 'lg', md: 'xl' }}>
+                        {user.userEmail}
                     </Text>
-                    <Button>Remove Admin</Button>
-                    <Button>Promote Admin</Button>
-                  </Box>
-                </Stack>
+                </Center>
+                <Button>Remove Admin</Button>
+                <Button>Promote Admin</Button>
               </Stack>
             </Stack>
-          </Box>
+          </Stack>
         ))}
       </SimpleGrid>
     )

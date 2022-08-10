@@ -13,13 +13,15 @@ import {
 } from "@chakra-ui/react";
 import "./Profile.css";
 // import Footer from '../Footer/Footer';
-import * as React from "react";
 import Footer from "../Footer/Footer";
-
+import jwt_decode from "jwt-decode"
 import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({ token }) => {
   const navigate = useNavigate();
+  console.log(token);
+  const {isAdmin} = jwt_decode(token);
+  console.log(isAdmin);
   // const handleNavToCart = () => {
   //     e.preventDefault();
   //     Navigate("/Cart")
@@ -155,133 +157,147 @@ const Profile = () => {
             </SimpleGrid>
           </Container>
         </Box>
-        <Box
-          className="admin-section"
-          as="section"
-          bg="bg-surface"
-          pt={{
-            base: "4",
-            md: "8",
-          }}
-          pb={{
-            base: "12",
-            md: "24",
-          }}
-        >
-          <Container>
-            <Stack spacing="5">
-              <Text fontSize="lg" fontWeight="medium">
-                Admin overview
-              </Text>
-              <Divider />
-            </Stack>
-          </Container>
-        </Box>
-        <Box
-          as="section"
-          py={{
-            base: "4",
-            md: "8",
-          }}
-        >
-          <Container>
-            <SimpleGrid
-              columns={{
-                base: 1,
-                md: 3,
+        {isAdmin && (
+          <>
+            <Box
+              className="admin-section"
+              as="section"
+              bg="bg-surface"
+              pt={{
+                base: "4",
+                md: "8",
               }}
-              gap={{
-                base: "5",
-                md: "6",
+              pb={{
+                base: "12",
+                md: "24",
               }}
             >
-              <Box
-                px={{
-                  base: "4",
-                  md: "6",
-                }}
-                py={{
-                  base: "5",
-                  md: "6",
-                }}
-                bg="bg-surface"
-                borderRadius="lg"
-                boxShadow={useColorModeValue("lg", "lg-dark")}
-                className="pulse"
-              >
-                <Stack onClick={() => navigate("/adminUsers", { replace: true })}>
-                  <Heading
-                    size={useBreakpointValue({
-                      base: "sm",
-                      md: "md",
-                    })}
-                  >
-                    Users
-                  </Heading>
-                  <Text fontSize="sm" color="muted">
-                    View or Edit Users
+              <Container>
+                <Stack spacing="5">
+                  <Text fontSize="lg" fontWeight="medium">
+                    Admin overview
                   </Text>
+                  <Divider />
                 </Stack>
-              </Box>
-              <Box
-                px={{
-                  base: "4",
-                  md: "6",
-                }}
-                py={{
-                  base: "5",
-                  md: "6",
-                }}
-                bg="bg-surface"
-                borderRadius="lg"
-                boxShadow={useColorModeValue("lg", "lg-dark")}
-                className="pulse"
-              >
-                <Stack onClick={() => navigate("/adminProducts", { replace: true })}>
-                  <Heading
-                    size={useBreakpointValue({
-                      base: "sm",
-                      md: "md",
-                    })}
+              </Container>
+            </Box>
+            <Box
+              as="section"
+              py={{
+                base: "4",
+                md: "8",
+              }}
+            >
+              <Container>
+                <SimpleGrid
+                  columns={{
+                    base: 1,
+                    md: 3,
+                  }}
+                  gap={{
+                    base: "5",
+                    md: "6",
+                  }}
+                >
+                  <Box
+                    px={{
+                      base: "4",
+                      md: "6",
+                    }}
+                    py={{
+                      base: "5",
+                      md: "6",
+                    }}
+                    bg="bg-surface"
+                    borderRadius="lg"
+                    boxShadow={useColorModeValue("lg", "lg-dark")}
+                    className="pulse"
                   >
-                    Products
-                  </Heading>
-                  <Text fontSize="sm" color="muted">
-                    View or Edit Products
-                  </Text>
-                </Stack>
-              </Box>
-              <Box
-                px={{
-                  base: "4",
-                  md: "6",
-                }}
-                py={{
-                  base: "5",
-                  md: "6",
-                }}
-                bg="bg-surface"
-                borderRadius="lg"
-                boxShadow={useColorModeValue("xl", "xl-dark")}
-                className="pulse"
-              >
-                <Stack onClick={() => navigate("/adminAnalytics", { replace: true })}>
-                  <Heading
-                    size={useBreakpointValue({
-                      base: "sm",
-                      md: "md",
-                    })}
+                    <Stack
+                      onClick={() => navigate("/adminUsers", { replace: true })}
+                    >
+                      <Heading
+                        size={useBreakpointValue({
+                          base: "sm",
+                          md: "md",
+                        })}
+                      >
+                        Users
+                      </Heading>
+                      <Text fontSize="sm" color="muted">
+                        View or Edit Users
+                      </Text>
+                    </Stack>
+                  </Box>
+                  <Box
+                    px={{
+                      base: "4",
+                      md: "6",
+                    }}
+                    py={{
+                      base: "5",
+                      md: "6",
+                    }}
+                    bg="bg-surface"
+                    borderRadius="lg"
+                    boxShadow={useColorModeValue("lg", "lg-dark")}
+                    className="pulse"
                   >
-                    Analytics
-                  </Heading>
-                  <Text fontSize="sm" color="muted">
-                    View your analytics
-                  </Text>
-                </Stack>
-              </Box>
-            </SimpleGrid>
-          </Container>
-        </Box>
+                    <Stack
+                      onClick={() =>
+                        navigate("/adminProducts", { replace: true })
+                      }
+                    >
+                      <Heading
+                        size={useBreakpointValue({
+                          base: "sm",
+                          md: "md",
+                        })}
+                      >
+                        Products
+                      </Heading>
+                      <Text fontSize="sm" color="muted">
+                        View or Edit Products
+                      </Text>
+                    </Stack>
+                  </Box>
+                  <Box
+                    px={{
+                      base: "4",
+                      md: "6",
+                    }}
+                    py={{
+                      base: "5",
+                      md: "6",
+                    }}
+                    bg="bg-surface"
+                    borderRadius="lg"
+                    boxShadow={useColorModeValue("xl", "xl-dark")}
+                    className="pulse"
+                  >
+                    <Stack
+                      onClick={() =>
+                        navigate("/adminAnalytics", { replace: true })
+                      }
+                    >
+                      <Heading
+                        size={useBreakpointValue({
+                          base: "sm",
+                          md: "md",
+                        })}
+                      >
+                        Analytics
+                      </Heading>
+                      <Text fontSize="sm" color="muted">
+                        View your analytics
+                      </Text>
+                    </Stack>
+                  </Box>
+                </SimpleGrid>
+              </Container>
+            </Box>
+          </>
+        )}
         <Box bg="gray.800" as="section" minH="140px" position="relative">
           <Box py="32" position="relative" zIndex={1}>
             <Box

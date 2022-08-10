@@ -14,9 +14,9 @@ export const registerUser = async (userEmail, password) => {
         password,
       }),
     });
-    const token  = await response.json();
-    console.log(token);
-    return token;
+    const data  = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.error("error", error);
   }
@@ -36,7 +36,6 @@ export const loginUser = async (userEmail, password) => {
     });
 
     const data = await response.json();
-    //console.log(token)
     return data;
   } catch (err) {
     console.error(err);
@@ -46,7 +45,7 @@ export const loginUser = async (userEmail, password) => {
 
 //USERS
 
-//fetch call for adminCheck
+//fetch call for user info
 export const getMyInfo = async (token) => {
   try{
     const response = await fetch(`${BASE_URL}/users/me`, {
@@ -81,27 +80,35 @@ export const usersGrab = async () => {
 };
 
 //fetch calls for editing users
-export const removeAdmin = async (token) => {
+export const removeAdmin = async (token, userId) => {
   try{
-     await fetch(`${BASE_URL}/admin/users/remove`, {
+     await fetch(`${BASE_URL}/admin/user/remove`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       },
+      body: JSON.stringify({
+        userId
+      })
+        
+      
     });
   } catch (err) {
     console.error(err);
   }
 };
-export const promoteAdmin = async (token) => {
+export const promoteAdmin = async (token, userId) => {
   try{
-     await fetch(`${BASE_URL}/admin/users/promote`, {
+     await fetch(`${BASE_URL}/admin/user/administrator`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       },
+      body: JSON.stringify({
+        userId
+      })
     });
   } catch (err) {
     console.error(err);
@@ -122,6 +129,22 @@ export const productsGrab = async () => {
     });
     const data = await response.json();
     return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+export const removeProduct = async (token, productId) => {
+  try{
+     await fetch(`${BASE_URL}/admin/products/${productId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        productId
+      })
+    });
   } catch (err) {
     console.error(err);
   }

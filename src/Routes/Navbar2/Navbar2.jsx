@@ -27,8 +27,6 @@ export default function Navbar2() {
       setToken(localStorage.getItem("token"));
     }
   }, []);
-
-  console.log(token);
   return (
     <div>
       <nav className="navbar-two">

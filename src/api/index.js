@@ -128,6 +128,22 @@ export const getProducts = async () => {
 };
 
 //CART 
+//get cart
+export const getCart = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 //add to cart
 export const addToCart = async (userId, productPrice, productId, quantity) => {

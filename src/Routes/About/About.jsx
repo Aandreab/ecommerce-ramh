@@ -15,21 +15,30 @@ export default function About() {
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
-                src={images.tempimg}
+                src={images.ryan}
                 alt="photograph"
               />
             </Col>
             <Col xs={6}>
-              <h1 className="about-heading">NAME</h1>
-              <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
+              <h1 className="about-heading">RYAN PETERS</h1>
+              <h1 className="about-description">Hi I'm Captain Classroom 30 ( or Ryan for short) I'm a 28 year old from Santa Barbara California who absolutely loves to mess with my bootcamp teachers. I love bodybuilding, reading fantasy books, and spending time with my wife Emily and our son Benjamin. My wife and I are expecting our second child (a daughter) and we could not be more excited. I want to personally thank you for taking the time to go through our CometKaze site and I hope we can provide what you are looking for!</h1>
             </Col>
           </Row>
 
           <Row className="about-row">
             <Col xs={6}>
-              <h1 className="about-heading">NAME</h1>
+              <h1 className="about-heading">AANDREA BARRIOS</h1>
               <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
             </Col>
+            <Col className="about-col" xs={6}>
+              <img
+                className="d-block w-100"
+                src={images.aandrea}
+                alt="photograph"
+              />
+            </Col>
+          </Row>
+          <Row className="about-row">
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
@@ -37,24 +46,15 @@ export default function About() {
                 alt="photograph"
               />
             </Col>
-          </Row>
-          <Row className="about-row">
-            <Col className="about-col" xs={6}>
-              <img
-                className="d-block w-100"
-                src={images.tempimg}
-                alt="photograph"
-              />
-            </Col>
             <Col xs={6}>
-              <h1 className="about-heading">NAME</h1>
+              <h1 className="about-heading">HENRY HUYNH</h1>
               <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
             </Col>
           </Row>
 
           <Row className="about-row">
             <Col xs={6}>
-              <h1 className="about-heading">NAME</h1>
+              <h1 className="about-heading">MAX MOIR</h1>
               <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
             </Col>
             <Col className="about-col" xs={6}>

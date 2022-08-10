@@ -19,6 +19,8 @@ import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { AiOutlineLogout } from "react-icons/ai";
+import EditProduct from "../Admin/EditProduct/EditProduct";
+import AddProduct from "../Admin/AddProducts/AddProduct";
 export default function Navbar2() {
   const [token, setToken] = useState("");
 
@@ -159,6 +161,8 @@ export default function Navbar2() {
         <Route path="adminUsers" element={<AdminUsers token={token}/> } />
         <Route path="adminProducts" element={<AdminProducts token={token} /> } />
         <Route path="adminAnalytics" element={<AdminAnalytics token={token} /> } />
+        <Route path="editProduct" element={<EditProduct token={token} />} />
+        <Route path="addProduct" element={<AddProduct token={token} /> } />
       </Routes>
     </div>
   );

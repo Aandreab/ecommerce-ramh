@@ -50,6 +50,8 @@
 .footer-company-desc{
   padding-top: 5px;
   color:#fff;
+  font-size: small;
+  text-align: center;
 }
 .footer-col{
   display: flex;

@@ -5,17 +5,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form'
 import Footer from '../../components/Footer/Footer';
+import Dropdown from 'react-bootstrap/Dropdown'
 import { Button, Card } from "react-bootstrap";
 import { useState, useEffect } from 'react';
-import { getProducts } from '../../api';
+import { getProducts, addToCart, getCart } from '../../api';
 import { formatCurrency } from '../../utilities/formatCurrency';
 import Rating from '../../utilities/Rating';
-export default function Products() {
+export default function Products({ setCart, token}) {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
+  // const [quantity, setQuantity] = useState(0)
   const filteredProducts = products.filter(({ title, description }) => {
     return description.toLowerCase().includes(searchTerm.toLowerCase()) || title.toLowerCase().includes(searchTerm.toLowerCase())
   })
+  
   const productHandler = async () => {
     try {
       const newProducts = await getProducts();
@@ -24,10 +27,22 @@ export default function Products() {
       console.error(err);
     }
   }
+  const cartHandler = async () => {
+    const newCart = await getCart(token);
+    setCart(newCart)
+  }
+  const handleAddToCart = async (e, userId, productPrice, productId, quantity) => {
+    e.preventDefault();
+    const newAddedCart = await addToCart(userId, productPrice, productId, quantity)
+    console.log(newAddedCart)
+    setCart(newAddedCart)
+  }
+
   useEffect(() => {
     productHandler();
+    cartHandler();
   }, [])
-  const quantity = 0
+
   return (
     <main>
       <div className='products-container'>
@@ -50,14 +65,23 @@ export default function Products() {
                       <div>{formatCurrency(product.price)}</div>
                     </Card.Title>
                     <div className='product-card-rating'>
-                      <Rating 
-                      value={product.rating} 
-                      text={`${product.inventory} reviews`}/>
+                      <Rating
+                        value={product.rating}
+                        text={`${product.inventory} reviews`} />
                     </div>
                     <div>
-                      {quantity === 0 ? (
-                        <Button size='sm'>+ Add To Cart</Button>
-                      ) : null}
+                      <Button onClick={handleAddToCart} size='sm'>+ Add To Cart</Button>
+                      <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                          0
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                          <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                          <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                          <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </div>
                   </Card.Body>
                 </Card>

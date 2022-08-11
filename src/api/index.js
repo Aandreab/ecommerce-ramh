@@ -1,7 +1,5 @@
 export const BASE_URL = 'https://tranquil-plains-39024.herokuapp.com/api';
 
-
-
 export const registerUser = async (userEmail, password) => {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
@@ -46,7 +44,7 @@ export const loginUser = async (userEmail, password) => {
 
 //USERS
 
-//fetch call for adminCheck
+//fetch call for userInfo
 export const getMyInfo = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
@@ -127,14 +125,17 @@ export const getProducts = async () => {
   }
 };
 
+
+
 //CART 
 //get cart
-export const getCart = async () => {
+export const getCart = async (token) => {
   try {
-    const response = await fetch(`${BASE_URL}/orders/cart`, {
+    const response = await fetch(`${BASE_URL}/orders/me/cart`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
     });
     const data = await response.json();
@@ -161,6 +162,31 @@ export const addToCart = async (userId, productPrice, productId, quantity) => {
       }),
     });
     const data = await response.json()
+    
+    return data;
+  } catch (err) {
+    console.error(err);
+
+  }
+}
+
+//delete from cart
+export const deleteFromCart = async (orderId, productId, productPrice, quantity) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderId, 
+        productId, 
+        productPrice, 
+        quantity
+      }),
+    });
+    const data = await response.json()
+    
     return data;
   } catch (err) {
     console.error(err);

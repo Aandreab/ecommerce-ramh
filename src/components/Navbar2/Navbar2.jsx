@@ -18,16 +18,36 @@ import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { AiOutlineLogout } from "react-icons/ai";
+import { getMyInfo, getCart } from "../../api";
+import PrivacyPolicy from "../../Routes/PrivacyPolicy/PrivacyPolicy";
 
 export default function Navbar2() {
   const [token, setToken] = useState("");
-  
+  const [user, setUser] = useState({});
+  const [cart, setCart] = useState([]);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
     }
   }, []);
-  console.log(token);
+  const userHandler = async (token) => {
+    const userInfo = await getMyInfo(token);
+    setUser(userInfo);
+  }
+  const cartHandler = async (token) => {
+    const myCart = await getCart(token);
+    setCart(myCart);
+}
+
+  useEffect(() => {
+    if (token) {
+      userHandler(token);
+      cartHandler(token);
+    }
+  }, [token])
+
+
   return (
     <div>
       <nav className="navbar-two">
@@ -117,18 +137,17 @@ export default function Navbar2() {
           </div>
         </div>
       </nav>
-     
       <Routes>
         <Route path="*" element={<Home />} />
-        <Route path="products" element={<Products />} />
+        <Route path="products" element={<Products token={token} setCart={setCart} user={user}/>} />
         <Route path="newsletter" element={<Newsletter />} />
         <Route path="about" element={<About />} />
         <Route path="profile" element={<Profile token={token} />} />
-        <Route path="cart" element={<Cart />} />
+        <Route path="cart" element={<Cart token={token} cart={cart} user={user} setCart={setCart} />} />
         <Route path="register" element={<Register setToken={setToken} />} />
         <Route path="login" element={<Login setToken={setToken} />} />
+        <Route path="privacypolicy" element={<PrivacyPolicy />} />
       </Routes>
-      
     </div>
   );
 }

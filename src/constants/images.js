@@ -25,8 +25,7 @@ import comicon from '../assets/comicon.jpeg'
 import newbac from '../assets/newbac.jpeg'
 import newbac2 from '../assets/newbac2.jpeg'
 import logo from '../assets/real-logo.png'
-import ryan from '../assets/ryan-about.jpg'
-import aandrea from '../assets/aandrea-about.JPG'
+
 export default {
     background,
     newsletter,
@@ -55,7 +54,6 @@ export default {
     newbac,
     newbac2,
     logo,
-    ryan,
-    aandrea
+    
 
 }

@@ -5,7 +5,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import Products from "../../Routes/Products/Products.jsx";
 import Home from "../../Routes/Home/Home.jsx";
 import Profile from "../../Routes/Profile/Profile.js";
-// import Newsletter from "../../Routes/Newsletter/Newsletter.jsx";
+import Newsletter from "../../Routes/Newsletter/Newsletter.jsx";
 import About from "../../Routes/About/About.jsx";
 import Cart from "../../Routes/Cart/Cart.jsx";
 import Login from "../../Routes/Login/Login";
@@ -66,7 +66,9 @@ export default function Navbar2() {
             <Link className="left-nav-links" to="/Products">
               COMICS
             </Link>
-
+            <Link className="left-nav-links" to="/Newsletter">
+              NEWSLETTER
+            </Link>
             <Link className="left-nav-links" to="/About">
               ABOUT
             </Link>
@@ -134,7 +136,7 @@ export default function Navbar2() {
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="products" element={<Products token={token} setCart={setCart} user={user}/>} />
-        {/* <Route path="newsletter" element={<Newsletter />} /> */}
+        <Route path="newsletter" element={<Newsletter />} />
         <Route path="about" element={<About />} />
         <Route path="profile" element={<Profile token={token} />} />
         <Route path="cart" element={<Cart token={token} cart={cart} user={user} setCart={setCart} />} />

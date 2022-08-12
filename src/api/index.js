@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://tranquil-plains-39024.herokuapp.com/api';
+export const BASE_URL = "https://tranquil-plains-39024.herokuapp.com/api";
 
 export const registerUser = async (userEmail, password) => {
   try {
@@ -12,9 +12,9 @@ export const registerUser = async (userEmail, password) => {
         password,
       }),
     });
-    const token = await response.json();
-    console.log(token);
-    return token;
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.error("error", error);
   }
@@ -34,7 +34,6 @@ export const loginUser = async (userEmail, password) => {
     });
 
     const data = await response.json();
-    //console.log(token)
     return data;
   } catch (err) {
     console.error(err);
@@ -44,14 +43,14 @@ export const loginUser = async (userEmail, password) => {
 
 //USERS
 
-//fetch call for userInfo
+//fetch call for user info
 export const getMyInfo = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await response.json();
@@ -60,7 +59,6 @@ export const getMyInfo = async (token) => {
     console.error(err);
   }
 };
-
 
 //fetch call for grabbing all users to display in admin section
 export const usersGrab = async () => {
@@ -79,27 +77,33 @@ export const usersGrab = async () => {
 };
 
 //fetch calls for editing users
-export const removeAdmin = async (token) => {
+export const removeAdmin = async (token, userId) => {
   try {
-    await fetch(`${BASE_URL}/admin/users/remove`, {
+    await fetch(`${BASE_URL}/admin/user/remove`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({
+        userId,
+      }),
     });
   } catch (err) {
     console.error(err);
   }
 };
-export const promoteAdmin = async (token) => {
+export const promoteAdmin = async (token, userId) => {
   try {
-    await fetch(`${BASE_URL}/admin/users/promote`, {
+    await fetch(`${BASE_URL}/admin/user/administrator`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({
+        userId,
+      }),
     });
   } catch (err) {
     console.error(err);
@@ -124,8 +128,22 @@ export const getProducts = async () => {
     console.error(err);
   }
 };
-
-
+export const removeProduct = async (token, productId) => {
+  try {
+    await fetch(`${BASE_URL}/admin/products/${productId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        productId,
+      }),
+    });
+  } catch (err){
+    console.error(err)
+  }
+};
 
 //CART 
 //get cart
@@ -142,6 +160,79 @@ export const getCart = async (token) => {
     return data;
   } catch (err) {
     console.error(err);
+  }
+};
+export const editProduct = async (
+  title,
+  author,
+  publisher,
+  imageLink,
+  genre,
+  price,
+  inventory,
+  description,
+  token, 
+  productId,
+) => {
+  try {
+    const response = await fetch(`${BASE_URL}/admin/products/${productId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title,
+        author,
+        publisher,
+        imageLink,
+        genre,
+        price,
+        inventory,
+        description,
+      }),
+    });
+
+    const data = response.json();
+    return data;
+  } catch (error) {
+    console.error("error", error);
+  }
+};
+export const addProduct = async (
+  title,
+  author,
+  publisher,
+  imageLink,
+  genre,
+  price,
+  inventory,
+  description,
+  token,
+) => {
+  try {
+    const response = await fetch(`${BASE_URL}/admin/products/add`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title,
+        author,
+        publisher,
+        imageLink,
+        genre,
+        price,
+        inventory,
+        description,
+      }),
+    });
+
+    const data = response.json();
+    return data;
+  } catch (error) {
+    console.error("error", error);
   }
 };
 

@@ -4,7 +4,7 @@ import { images } from "../../constants";
 import { Link, Routes, Route } from "react-router-dom";
 import Products from "../../Routes/Products/Products.jsx";
 import Home from "../../Routes/Home/Home.jsx";
-import Profile from "../../Routes/Profile/Profile.js";
+import Profile from "../../Routes/Profile/Profile.jsx";
 import Newsletter from "../../Routes/Newsletter/Newsletter.jsx";
 import About from "../../Routes/About/About.jsx";
 import Cart from "../../Routes/Cart/Cart.jsx";
@@ -20,6 +20,11 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { AiOutlineLogout } from "react-icons/ai";
 import { getMyInfo, getCart } from "../../api";
 import PrivacyPolicy from "../../Routes/PrivacyPolicy/PrivacyPolicy";
+import EditProduct from "../Admin/EditProduct/EditProduct";
+import AddProduct from "../Admin/AddProduct/AddProduct";
+import AdminUsers from "../Admin/AdminUsers/AdminUsers.jsx";
+import AdminProducts from "../Admin/AdminProducts/AdminProducts.jsx";
+import AdminAnalytics from "../Admin/AdminAnalytics/AdminAnalytics.jsx";
 
 export default function Navbar2() {
   const [token, setToken] = useState("");
@@ -147,6 +152,11 @@ export default function Navbar2() {
         <Route path="register" element={<Register setToken={setToken} />} />
         <Route path="login" element={<Login setToken={setToken} />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="adminUsers" element={<AdminUsers token={token}/> } />
+        <Route path="adminProducts" element={<AdminProducts token={token} /> } />
+        <Route path="adminAnalytics" element={<AdminAnalytics token={token} /> } />
+        <Route path="editProduct" element={<EditProduct token={token} />} />
+        <Route path="addProduct" element={<AddProduct token={token} /> } />
       </Routes>
     </div>
   );

@@ -28,8 +28,9 @@ import {
 export default function Login({ setToken }) {
   const [userEmail, setuserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false)
   const [loginMessage, setLoginMessage] = useState({});
-  const { isOpen, onOpen } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
   // const handleSubmit = async (e) => {
@@ -63,6 +64,7 @@ export default function Login({ setToken }) {
     if (loginInfo.error) {
       setLoginMessage(loginInfo);
       onOpen();
+      return false; 
     }
     window.localStorage.setItem("token", loginInfo.token);
     window.localStorage.setItem("userEmail", userEmail);
@@ -71,13 +73,18 @@ export default function Login({ setToken }) {
     setToken(myToken);
     setLoginMessage(loginInfo);
     onOpen();
+    setLoggedIn(true); 
   };
   const navToRegister = async (e) => {
     e.preventDefault();
     navigate("/Register");
   };
   const closeFunc = () => {
-    navigate("/home");
+   if(loggedIn) {
+     navigate("/home");
+   } else {
+     onClose(); 
+   }
   };
   // const navToHome = async (e) =>{
   //   e.preventDefault();

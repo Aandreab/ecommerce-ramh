@@ -28,34 +28,10 @@ import {
 export default function Login({ setToken }) {
   const [userEmail, setuserEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginMessage, setLoginMessage] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-
-  // const handleSubmit = async (e) => {
-  //   e.ppreventDefault();
-  //   const loginInfo = await loginUser(userEmail, password);
-  //   setToken(loginInfo);
-  //   setuserEmail("");
-  //   setPassword("");
-  //   navigate("/Home");
-  // };
-  // const onLogin = async (e) => {
-  //   e.preventDefault();
-  //   const loginInfo = await loginUser(userEmail, password);
-  //   if (loginInfo.error) {
-  //     setLoginMessage(loginInfo);
-  //     onOpen();
-  //   }
-  //   setToken(loginInfo)
-  //   window.localStorage.setItem("token", loginInfo.token);
-  //   window.localStorage.setItem("userEmail", userEmail);
-  //   setLoginMessage(loginInfo);
-  //   console.log(userEmail, password);
-  //   onOpen();
-  //   //navigate("/Home");
-  // };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -64,7 +40,7 @@ export default function Login({ setToken }) {
     if (loginInfo.error) {
       setLoginMessage(loginInfo);
       onOpen();
-      return false; 
+      return false;
     }
     window.localStorage.setItem("token", loginInfo.token);
     window.localStorage.setItem("userEmail", userEmail);
@@ -73,23 +49,20 @@ export default function Login({ setToken }) {
     setToken(myToken);
     setLoginMessage(loginInfo);
     onOpen();
-    setLoggedIn(true); 
+    setLoggedIn(true);
   };
   const navToRegister = async (e) => {
     e.preventDefault();
     navigate("/Register");
   };
   const closeFunc = () => {
-   if(loggedIn) {
-     navigate("/home");
-   } else {
-     onClose(); 
-   }
+    if (loggedIn) {
+      navigate("/home");
+    } else {
+      onClose();
+    }
   };
-  // const navToHome = async (e) =>{
-  //   e.preventDefault();
-  //   navigate("/home")
-  // }
+
   return (
     <Box h={"100vh"} bg={"white"}>
       <Container

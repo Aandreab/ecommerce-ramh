@@ -182,7 +182,6 @@ export const editProduct = async (
   }
 };
 export const addProduct = async (
-  token,
   title,
   author,
   publisher,
@@ -190,7 +189,8 @@ export const addProduct = async (
   genre,
   price,
   inventory,
-  description
+  description,
+  token,
 ) => {
   try {
     const response = await fetch(`${BASE_URL}/admin/products/add`, {

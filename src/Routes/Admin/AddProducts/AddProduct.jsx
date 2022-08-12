@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { addProduct } from "../../../api";
 
-const AddProduct = () => {
+const AddProduct = ({token}) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publisher, setPublisher] = useState("");
@@ -29,13 +29,13 @@ const AddProduct = () => {
   const [inventory, setInventory] = useState("");
   const [description, setDescription] = useState("");
   const [addMessage, setAddMessage] = useState("");
-  const [products, setProducts] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const myToken = token; 
+  console.log(myToken);
 
-  const onAdd = async (e, productId) => {
+  const onAdd = async (e, productId, myToken) => {
     e.preventDefault();
     const data = await addProduct(
-      productId,
       title,
       author,
       publisher,
@@ -43,21 +43,14 @@ const AddProduct = () => {
       genre,
       price,
       inventory,
-      description
+      description,
+      productId,
+      myToken,
     );
     if (data.error) {
       setAddMessage(data);
       onOpen();
     }
-    if (data && data.name) {
-      const newProduct = [
-        data,
-        ...products.filter((product) => {
-          return product.id !== productId;
-        }),
-      ];
-
-      setProducts(newProduct);
       setTitle("");
       setAuthor("");
       setPublisher("");
@@ -66,9 +59,8 @@ const AddProduct = () => {
       setPrice("");
       setInventory("");
       setDescription("");
-      setAddMessage(newProduct);
+      setAddMessage(addMessage.message);
       onOpen();
-    }
   };
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
@@ -126,7 +118,6 @@ const AddProduct = () => {
             <Button
               onClick={(e) =>
                 onAdd(
-                  e,
                   title,
                   author,
                   publisher,
@@ -134,7 +125,8 @@ const AddProduct = () => {
                   genre,
                   price,
                   inventory,
-                  description
+                  description,
+                  e
                 )
               }
             >
@@ -151,10 +143,10 @@ const AddProduct = () => {
           backdropBlur="2px"
         />
         <ModalContent>
-          <ModalHeader textAlign={"center"}>{addMessage.name}</ModalHeader>
+          <ModalHeader textAlign={"center"}>{addMessage}</ModalHeader>
           <ModalCloseButton />
           <ModalBody textAlign={"center"} fontWeight={400}>
-            <Text fontWeight={400}>{addMessage.message}</Text>
+            <Text fontWeight={400}></Text>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>

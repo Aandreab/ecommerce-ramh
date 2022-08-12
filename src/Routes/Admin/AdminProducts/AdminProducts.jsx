@@ -4,6 +4,7 @@ import { Box, Button, Container, Divider, Heading, Stack, Text, SimpleGrid, Img,
 import { useNavigate } from "react-router-dom";
 
 const AdminProducts = ({ token }) => {
+console.log(token);
   const [products, setProducts] = useState([]);
   let navigate = useNavigate();
 

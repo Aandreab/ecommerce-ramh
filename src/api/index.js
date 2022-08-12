@@ -277,7 +277,6 @@ export const deleteFromCart = async (orderId, productId, productPrice, quantity)
       }),
     });
     const data = await response.json()
-    
     return data;
   } catch (err) {
     console.error(err);

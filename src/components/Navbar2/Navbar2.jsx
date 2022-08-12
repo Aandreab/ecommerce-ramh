@@ -89,7 +89,6 @@ export default function Navbar2() {
               </Link>
             </OverlayTrigger>
 
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-profile">Profile</Tooltip>}>
               <div className="overlay-container">
                 {token ? <Link className="right-nav-links" to="/Profile">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -97,8 +96,7 @@ export default function Navbar2() {
                   </Button>
                 </Link> : null}
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-register">Register/Login</Tooltip>}>
+
               <div className="overlay-container">
                 {!token ? <Link className="right-nav-links" to="/Register">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -106,8 +104,7 @@ export default function Navbar2() {
                   </Button>
                 </Link> : null}
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-favorites">Favorites</Tooltip>}>
+   
               <div className="overlay-container">
                 <Link className="right-nav-links" to="/">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -115,8 +112,7 @@ export default function Navbar2() {
                   </Button>
                 </Link>
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-cart">Cart</Tooltip>}>
+           
               <div className="overlay-container">
                 <Link className="right-nav-links" to="/Cart">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -138,7 +134,7 @@ export default function Navbar2() {
                   </Button>
                 </Link>
               </div>
-            </OverlayTrigger>
+          
           </div>
         </div>
       </nav>

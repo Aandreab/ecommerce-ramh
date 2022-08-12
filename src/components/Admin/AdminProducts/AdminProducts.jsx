@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { productsGrab, removeProduct } from "../../../api";
+import { getProducts, removeProduct } from "../../../api";
 import { Box, Button, Container, Divider, Heading, Stack, Text, SimpleGrid, Img, Center, useColorModeValue, useBreakpointValue } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ console.log(token);
   let navigate = useNavigate();
 
   const AdminProductsData = async () => {
-    const data = await productsGrab();
+    const data = await getProducts();
     console.log(data);
     setProducts(data);
   };

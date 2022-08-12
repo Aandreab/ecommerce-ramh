@@ -112,9 +112,9 @@ export const promoteAdmin = async (token, userId) => {
 
 //PRODUCTS
 
-//fetch calls for manipulating products to display in admin section
+//get all products
 
-export const productsGrab = async () => {
+export const getProducts = async () => {
   try {
     const response = await fetch(`${BASE_URL}/products/products`, {
       method: "GET",
@@ -140,6 +140,24 @@ export const removeProduct = async (token, productId) => {
         productId,
       }),
     });
+  } catch (err){
+    console.error(err)
+  }
+};
+
+//CART 
+//get cart
+export const getCart = async (token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/me/cart`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    });
+    const data = await response.json();
+    return data;
   } catch (err) {
     console.error(err);
   }
@@ -217,3 +235,52 @@ export const addProduct = async (
     console.error("error", error);
   }
 };
+
+
+//add to cart
+export const addToCart = async (userId, productPrice, productId, quantity) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId, 
+        productPrice, 
+        productId, 
+        quantity
+      }),
+    });
+    const data = await response.json()
+    
+    return data;
+  } catch (err) {
+    console.error(err);
+
+  }
+}
+
+//delete from cart
+export const deleteFromCart = async (orderId, productId, productPrice, quantity) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/cart`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderId, 
+        productId, 
+        productPrice, 
+        quantity
+      }),
+    });
+    const data = await response.json()
+    
+    return data;
+  } catch (err) {
+    console.error(err);
+
+  }
+}

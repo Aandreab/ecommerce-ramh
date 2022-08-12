@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import "./Profile.css";
 // import Footer from '../Footer/Footer';
-import Footer from "../Footer/Footer";
+import Footer from "../../components/Footer/Footer.jsx";
 import jwt_decode from "jwt-decode"
 import { useNavigate } from "react-router-dom";
 
@@ -140,17 +140,17 @@ const Profile = ({ token }) => {
                 boxShadow={useColorModeValue("xl", "xl-dark")}
                 className="pulse"
               >
-                <Stack onClick={() => navigate("/home", { replace: true })}>
+                <Stack onClick={() => navigate("/products", { replace: true })}>
                   <Heading
                     size={useBreakpointValue({
                       base: "sm",
                       md: "md",
                     })}
                   >
-                    Recent
+                    Comics
                   </Heading>
                   <Text fontSize="sm" color="muted">
-                    View my Recent Orders
+                    View our Products Page
                   </Text>
                 </Stack>
               </Box>

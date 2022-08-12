@@ -52,15 +52,8 @@ export default function Register({ setToken }) {
     navigate("/home");
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const registerInfo = await registerUser(userEmail, password);
-  //   setToken(registerInfo);
-  //   setuserEmail("");
-  //   setPassword("");
-  //   navigate("/Home");
-  // };
-  const handleLogin = async (e) => {
+ 
+  const handleNavToLogin = async (e) => {
     e.preventDefault();
     navigate("/Login");
   };
@@ -132,7 +125,7 @@ export default function Register({ setToken }) {
               >
                 Sign up
               </Button>
-              <Button onClick={handleLogin} variant="secondary" iconSpacing="3">
+              <Button onClick={handleNavToLogin} variant="secondary" iconSpacing="3">
                 {" "}
                 Already have an account?
                 <p className="login-from-reg-link">Log In</p>

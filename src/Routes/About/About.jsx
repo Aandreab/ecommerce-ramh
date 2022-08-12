@@ -10,8 +10,14 @@ export default function About() {
     <main>
       <div className="main-container">
         <Container>
-          <h1 className="about-header">MEET THE TEAM</h1>
           <Row className="about-row">
+            <h1 className="about-header">ABOUT US</h1>
+            <Col className="about-col">
+              <h1 className="about-heading">Welcome to CometKaze Comics! Your one stop shop for all things comic related. We pride ourselves on a robust base of comic titles and categories. Thank you for your interest in our site and we look forward to providing you with the highest quality comics in a timely manner. Now get out there and get your Comic(on)!</h1>
+            </Col>
+          </Row>
+          <Row className="about-row">
+            <h1 className="about-header">MEET THE TEAM</h1>
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
@@ -28,7 +34,10 @@ export default function About() {
           <Row className="about-row">
             <Col xs={6}>
               <h1 className="about-heading">AANDREA BARRIOS</h1>
-              <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
+              <h1 className="about-description">
+                Hi everyone! I'm Aandrea and I’m from San Jose California. I graduated college at the end of 2020 with a bachelors of science in Kinesiology and quickly after graduating realized that I might've chosen the wrong major (crazy right).
+                After lots of thought and self reflection, I decided to join Fullstack Academy.
+                In these last few months I have done things I could have never imagined possible for myself. I found a love for coding and I have learned so much about programming. I’m super excited to see what the future holds for myself and hope you all enjoy our e-commerce website. </h1>
             </Col>
             <Col className="about-col" xs={6}>
               <img
@@ -55,7 +64,7 @@ export default function About() {
           <Row className="about-row">
             <Col xs={6}>
               <h1 className="about-heading">MAX MOIR</h1>
-              <h1 className="about-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur</h1>
+              <h1 className="about-description">My name is Max Moir and I am a Full Stack Academy Graduate. I decided it was time for a career change and found Fullstack . I have fallen in love with coding and couldnt be more happy with my decision. When Im not studying or working you can find me on the golf course or the beach. I live on the central coast of California so the weather is always beautiful. Im excited for a long knowledge filled career in the programming  and have worked really hard on this Comic book site. Enjoy!</h1>
             </Col>
             <Col className="about-col" xs={6}>
               <img

@@ -5,7 +5,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import Products from "../../Routes/Products/Products.jsx";
 import Home from "../../Routes/Home/Home.jsx";
 import Profile from "../../Routes/Profile/Profile.js";
-import Newsletter from "../../Routes/Newsletter/Newsletter.jsx";
+// import Newsletter from "../../Routes/Newsletter/Newsletter.jsx";
 import About from "../../Routes/About/About.jsx";
 import Cart from "../../Routes/Cart/Cart.jsx";
 import Login from "../../Routes/Login/Login";
@@ -66,9 +66,7 @@ export default function Navbar2() {
             <Link className="left-nav-links" to="/Products">
               COMICS
             </Link>
-            <Link className="left-nav-links" to="/Newsletter">
-              NEWSLETTER
-            </Link>
+
             <Link className="left-nav-links" to="/About">
               ABOUT
             </Link>
@@ -84,7 +82,6 @@ export default function Navbar2() {
               </Link>
             </OverlayTrigger>
 
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-profile">Profile</Tooltip>}>
               <div className="overlay-container">
                 {token ? <Link className="right-nav-links" to="/Profile">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -92,8 +89,7 @@ export default function Navbar2() {
                   </Button>
                 </Link> : null}
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-register">Register/Login</Tooltip>}>
+
               <div className="overlay-container">
                 {!token ? <Link className="right-nav-links" to="/Register">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -101,8 +97,7 @@ export default function Navbar2() {
                   </Button>
                 </Link> : null}
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-favorites">Favorites</Tooltip>}>
+   
               <div className="overlay-container">
                 <Link className="right-nav-links" to="/">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -110,8 +105,7 @@ export default function Navbar2() {
                   </Button>
                 </Link>
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger placement="bottom" delay={{ show: 250, hide: 400 }} overlay={<Tooltip id="tooltip-cart">Cart</Tooltip>}>
+           
               <div className="overlay-container">
                 <Link className="right-nav-links" to="/Cart">
                   <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
@@ -133,14 +127,14 @@ export default function Navbar2() {
                   </Button>
                 </Link>
               </div>
-            </OverlayTrigger>
+          
           </div>
         </div>
       </nav>
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="products" element={<Products token={token} setCart={setCart} user={user}/>} />
-        <Route path="newsletter" element={<Newsletter />} />
+        {/* <Route path="newsletter" element={<Newsletter />} /> */}
         <Route path="about" element={<About />} />
         <Route path="profile" element={<Profile token={token} />} />
         <Route path="cart" element={<Cart token={token} cart={cart} user={user} setCart={setCart} />} />

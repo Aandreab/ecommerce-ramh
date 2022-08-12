@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form'
 import Footer from '../../components/Footer/Footer';
-import Dropdown from 'react-bootstrap/Dropdown'
+// import Dropdown from 'react-bootstrap/Dropdown'
 import { Button, Card } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { getProducts, addToCart, getCart } from '../../api';
@@ -55,33 +55,23 @@ export default function Products({ setCart, token}) {
             </Form>
           </Row>
           <Row >
-            {filteredProducts && filteredProducts.map((product, idx) => (
-              <Col key={idx} value={product}>
+            {filteredProducts && filteredProducts.map(({imageLink, price, rating, inventory, title, productId}) => (
+              <Col key={productId}>
                 <Card className="single-product-card" style={{ width: "18rem" }}>
-                  <Card.Img className="card-image" variant="top" src={product.imageLink} />
+                  <Card.Img className="card-image" variant="top" src={imageLink} />
                   <Card.Body>
                     <Card.Title>
-                      <div>{product.title}</div>
-                      <div>{formatCurrency(product.price)}</div>
+                      <div>{title}</div>
+                      <div>{formatCurrency(price)}</div>
                     </Card.Title>
                     <div className='product-card-rating'>
                       <Rating
-                        value={product.rating}
-                        text={`${product.inventory} reviews`} />
+                        value={rating}
+                        text={`${inventory} reviews`} />
                     </div>
                     <div>
-                      <Button onClick={handleAddToCart} size='sm'>+ Add To Cart</Button>
-                      <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                          0
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">1</Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">2</Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">3</Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
+                      <Button onClick={()=> handleAddToCart(productId)} size='sm'>+ Add To Cart</Button>
+                    
                     </div>
                   </Card.Body>
                 </Card>

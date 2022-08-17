@@ -19,7 +19,6 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = ({ token }) => {
   const navigate = useNavigate();
-  console.log(token);
   const {isAdmin} = jwt_decode(token);
   console.log(isAdmin);
   // const handleNavToCart = () => {

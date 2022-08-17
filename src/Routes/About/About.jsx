@@ -21,7 +21,7 @@ export default function About() {
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
-                src={images.tempimg}
+                src={images.Ryan}
                 alt="photograph"
               />
             </Col>
@@ -42,7 +42,7 @@ export default function About() {
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
-                src={images.tempimg}
+                src={images.Aandrea}
                 alt="photograph"
               />
             </Col>
@@ -51,7 +51,7 @@ export default function About() {
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
-                src={images.tempimg}
+                src={images.Henry}
                 alt="photograph"
               />
             </Col>
@@ -69,7 +69,7 @@ export default function About() {
             <Col className="about-col" xs={6}>
               <img
                 className="d-block w-100"
-                src={images.tempimg}
+                src={images.Max}
                 alt="photograph"
               />
             </Col>

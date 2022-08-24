@@ -25,7 +25,8 @@ import AddProduct from "../Admin/AddProduct/AddProduct";
 import AdminUsers from "../Admin/AdminUsers/AdminUsers.jsx";
 import AdminProducts from "../Admin/AdminProducts/AdminProducts.jsx";
 import AdminAnalytics from "../Admin/AdminAnalytics/AdminAnalytics.jsx";
-
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 export default function Navbar2() {
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
@@ -43,7 +44,7 @@ export default function Navbar2() {
   const cartHandler = async (token) => {
     const myCart = await getCart(token);
     setCart(myCart);
-}
+  }
 
   useEffect(() => {
     if (token) {
@@ -68,9 +69,14 @@ export default function Navbar2() {
             <Link className="left-nav-links" to="/Home">
               HOME
             </Link>
-            <Link className="left-nav-links" to="/Products">
-              COMICS
-            </Link>
+            <NavDropdown align="end" className="left-nav-links" title="COMICS">
+              <NavDropdown.Item href="/Products">SHOP ALL</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <Dropdown.Header>Shop By Genre</Dropdown.Header>
+              <NavDropdown.Item href="#action/3.1">ACTION</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">HORROR</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">ROMANCE</NavDropdown.Item>
+            </NavDropdown>
             <Link className="left-nav-links" to="/Newsletter">
               NEWSLETTER
             </Link>
@@ -89,58 +95,58 @@ export default function Navbar2() {
               </Link>
             </OverlayTrigger>
 
-              <div className="overlay-container">
-                {token ? <Link className="right-nav-links" to="/Profile">
-                  <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
-                    <CgProfile className="nav-icons" size={20} />
-                  </Button>
-                </Link> : null}
-              </div>
+            <div className="overlay-container">
+              {token ? <Link className="right-nav-links" to="/Profile">
+                <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
+                  <CgProfile className="nav-icons" size={20} />
+                </Button>
+              </Link> : null}
+            </div>
 
-              <div className="overlay-container">
-                {!token ? <Link className="right-nav-links" to="/Register">
-                  <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
-                    <CgProfile className="nav-icons" size={20} />
-                  </Button>
-                </Link> : null}
-              </div>
-   
-              <div className="overlay-container">
-                <Link className="right-nav-links" to="/">
-                  <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
-                    <FaRegHeart className="nav-icons" size={20} />
-                  </Button>
-                </Link>
-              </div>
-           
-              <div className="overlay-container">
-                <Link className="right-nav-links" to="/Cart">
-                  <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
-                    <HiOutlineShoppingCart className="nav-icons" size={20} />
-                    <div
-                      className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-                      style={{
-                        color: "white",
-                        width: "1.5rem",
-                        height: "1.5rem",
-                        position: "absolute",
-                        bottom: 0,
-                        right: 0,
-                        transform: "translate(25%, 25%)",
-                      }}
-                    >
-                      3
-                    </div>
-                  </Button>
-                </Link>
-              </div>
-          
+            <div className="overlay-container">
+              {!token ? <Link className="right-nav-links" to="/Register">
+                <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
+                  <CgProfile className="nav-icons" size={20} />
+                </Button>
+              </Link> : null}
+            </div>
+
+            <div className="overlay-container">
+              <Link className="right-nav-links" to="/">
+                <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
+                  <FaRegHeart className="nav-icons" size={20} />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="overlay-container">
+              <Link className="right-nav-links" to="/Cart">
+                <Button className="rounded-circle" variant="outline-secondary" size="sm" style={{ width: "2.4rem", height: "2.4rem", position: "relative", }}>
+                  <HiOutlineShoppingCart className="nav-icons" size={20} />
+                  <div
+                    className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                    style={{
+                      color: "white",
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      position: "absolute",
+                      bottom: 0,
+                      right: 0,
+                      transform: "translate(25%, 25%)",
+                    }}
+                  >
+                    3
+                  </div>
+                </Button>
+              </Link>
+            </div>
+
           </div>
         </div>
       </nav>
       <Routes>
         <Route path="*" element={<Home />} />
-        <Route path="products" element={<Products token={token} setCart={setCart} user={user}/>} />
+        <Route path="products" element={<Products token={token} setCart={setCart} user={user} />} />
         <Route path="newsletter" element={<Newsletter />} />
         <Route path="about" element={<About />} />
         <Route path="profile" element={<Profile token={token} />} />
@@ -148,11 +154,11 @@ export default function Navbar2() {
         <Route path="register" element={<Register setToken={setToken} />} />
         <Route path="login" element={<Login setToken={setToken} />} />
         <Route path="privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="adminUsers" element={<AdminUsers token={token}/> } />
-        <Route path="adminProducts" element={<AdminProducts token={token} /> } />
-        <Route path="adminAnalytics" element={<AdminAnalytics token={token} /> } />
+        <Route path="adminUsers" element={<AdminUsers token={token} />} />
+        <Route path="adminProducts" element={<AdminProducts token={token} />} />
+        <Route path="adminAnalytics" element={<AdminAnalytics token={token} />} />
         <Route path="editProduct" element={<EditProduct token={token} />} />
-        <Route path="addProduct" element={<AddProduct token={token} /> } />
+        <Route path="addProduct" element={<AddProduct token={token} />} />
       </Routes>
     </div>
   );

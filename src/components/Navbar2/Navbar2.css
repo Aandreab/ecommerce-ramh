@@ -1,0 +1,45 @@
+.navbar-two {
+  display: flex;
+  background: #F8F8F8;
+  font-size: 18px;
+}
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 95%;
+    
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    float: left;
+  }
+
+  .left-nav-links{
+    
+    display: inline;
+    padding-left: 20px;
+    color: #777777;
+    
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+    
+  .left-nav-links:hover {
+    color: black;
+  }
+  .navbar-right {
+    display: flex;
+    float: right;
+    justify-content: flex-end;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+ .right-nav-links{
+  margin-right: 17px;
+ }
+ 
+
